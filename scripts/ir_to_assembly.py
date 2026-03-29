@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to extract assembly address ranges from kernel-results/*/*.output.txt files.
+Script to extract assembly address ranges from dataset/*/*.output.txt files.
 Uses debug information from vmlinux to map source line numbers to assembly addresses.
 
 Usage:
@@ -12,8 +12,7 @@ The --batch mode processes files in parallel using multiple threads.
 Use --workers N to specify the number of parallel workers (default: CPU count).
 
 Output:
-    - If "Number of max-level functions:" is not 1, prints "TODO"
-    - Otherwise, prints the function name, source locations, and assembly address range
+    - Function name, source locations, and assembly address range
 """
 
 import sys
@@ -35,7 +34,7 @@ def get_cache_dir(vmlinux_path):
     vmlinux_id = f"{vmlinux_path}_{vmlinux_stat.st_mtime}_{vmlinux_stat.st_size}"
     cache_hash = hashlib.md5(vmlinux_id.encode()).hexdigest()[:16]
 
-    cache_dir = Path(".vmlinux_cache") / cache_hash
+    cache_dir = Path(__file__).parent.parent / "mapping" / ".vmlinux_cache" / cache_hash
     return cache_dir
 
 
@@ -64,7 +63,7 @@ def generate_nm_cache(vmlinux_path, cache_dir, module_name=None):
 
 def generate_readelf_cache(vmlinux_path, cache_dir, module_name=None):
     """Generate and cache readelf debug line output."""
-    print(f"Generating readelf cache for {vmlinux_path} (this may take 2-3 minutes)...", file=sys.stderr)
+    print(f"Generating readelf cache for {vmlinux_path}", file=sys.stderr)
     if module_name:
         cache_file = cache_dir / f"{module_name}.readelf_decodedline.txt"
     else:
@@ -93,7 +92,6 @@ def load_nm_cache(vmlinux_path, cache_dir, module_name=None):
         cache_file = cache_dir / "nm_output.txt"
 
     if cache_file.exists():
-        print(f"Loading nm cache from {cache_file}", file=sys.stderr)
         with open(cache_file, 'r') as f:
             return f.read()
 
@@ -108,7 +106,6 @@ def load_readelf_cache(vmlinux_path, cache_dir, module_name=None):
         cache_file = cache_dir / "readelf_decodedline.txt"
 
     if cache_file.exists():
-        print(f"Loading readelf cache from {cache_file}", file=sys.stderr)
         with open(cache_file, 'r') as f:
             return f.read()
 
@@ -118,7 +115,6 @@ def load_readelf_cache(vmlinux_path, cache_dir, module_name=None):
 def build_symbol_to_module_map(module_nm_cache, module_files):
     """
     Build a mapping from symbol names to module names by parsing nm output from all modules.
-    This is more reliable than Module.symvers which only contains exported symbols.
     Returns a dict: {symbol_name: (module_name, ko_path)}
     """
     symbol_to_module = {}
@@ -138,7 +134,7 @@ def build_symbol_to_module_map(module_nm_cache, module_files):
                 # nm format: <address> <type> <symbol>
                 symbol_name = parts[2]
                 # Store the module name and path for this symbol
-                # If symbol exists in multiple modules, last one wins (could track all if needed)
+                # If symbol exists in multiple modules, last one wins
                 symbol_to_module[symbol_name] = (module_name, ko_path)
 
     print(f"Built mapping for {len(symbol_to_module)} symbols across {len(module_nm_cache)} modules", file=sys.stderr)
@@ -174,7 +170,7 @@ def get_module_cache_dir(ko_path):
     ko_id = f"{ko_path}_{ko_stat.st_mtime}_{ko_stat.st_size}"
     cache_hash = hashlib.md5(ko_id.encode()).hexdigest()[:16]
 
-    cache_dir = Path(".module_cache") / cache_hash
+    cache_dir = Path(__file__).parent.parent / "mapping" / ".module_cache" / cache_hash
     return cache_dir
 
 
@@ -231,9 +227,11 @@ def find_symbol_binary(function_name, symbol_to_module):
 
 
 def parse_dataflow_analysis_output_file(filepath):
-    """Parse the kernel-results/*/*.output.txt file and extract relevant information."""
+    """Parse the dataset/*/*.output.txt file and extract relevant information."""
     with open(filepath, 'r') as f:
         content = f.read()
+
+    # FIXME: revisit these
 
     # Manual tweaks - Pattern 1 (multiline predicate) now automated!
     # The auto-correction will handle nearby line searches when exact lines fail
@@ -442,10 +440,7 @@ def parse_single_function(content, function_name, filepath):
         #   %47 = load ptr, ptr @amt_wq, align 8, !dbg !23706890
         # Let's maybe approximate by looking forward/backward a few
         # instructions in our pass.
-        # print(f"[TODO] Start IR instruction without source code location")
-        # print(f"  File: {filepath}")
-        # print(f"  Earliest instruction: {earliest_match.group(1)}")
-        # print(f"  Function: {earliest_match.group(2)}")
+        # TODO
         return None, "The start IR instruction does not have corresponding source code location"
 
     earliest_location = earliest_match.group(1)
@@ -463,10 +458,7 @@ def parse_single_function(content, function_name, filepath):
                 re.MULTILINE
             )
             assert latest_match is not None
-            # print(f"[TODO] End IR instruction without source code location")
-            # print(f"  File: {filepath}")
-            # print(f"  Latest instruction: {latest_match.group(1)}")
-            # print(f"  Function: {latest_match.group(2)}")
+            # TODO
             return None, "The end IR instruction does not have corresponding source code location"
         latest_location = latest_match.group(1)
         latest_func = latest_match.group(2)
@@ -482,17 +474,11 @@ def parse_single_function(content, function_name, filepath):
     latest_file, latest_line = parse_location(latest_location)
 
     if not earliest_file or not earliest_line:
-        # print(f"[TODO] Could not parse source code location: {earliest_location}")
-        # print(f"  File: {filepath}")
-        # print(f"  Location: {earliest_location}")
-        # print(f"  Function: {earliest_match.group(2)}")
+        # TODO
         return None, f"Could not parse earliest location: {earliest_location}"
 
     if not latest_file or not latest_line:
-        # print(f"[TODO] Could not parse source code location: {latest_location}")
-        # print(f"  File: {filepath}")
-        # print(f"  Location: {latest_location}")
-        # print(f"  Function: {latest_match.group(2)}")
+        # TODO
         return None, f"Could not parse latest location: {latest_location}"
 
     return {
@@ -1313,19 +1299,19 @@ def process_single_result(result, vmlinux_path, nm_output, readelf_output, verbo
             start_off = earliest_offset if earliest_offset else "N/A"
             end_off = latest_offset if latest_offset else "N/A"
 
-            print(f"{source_start}, {source_end}, {binary_start}, {binary_end}, {symbol}, {start_off}, {end_off}")
+            print(f"SPAN, {source_start}, {source_end}, {binary_start}, {binary_end}, {symbol}, {start_off}, {end_off}")
         elif earliest_addr:
             source_start = f"{result['earliest_file']}:{result['earliest_line']}"
             binary_start = f"0x{earliest_addr}"
             symbol = earliest_symbol if earliest_symbol else "N/A"
             start_off = earliest_offset if earliest_offset else "N/A"
-            print(f"{source_start}, N/A, {binary_start}, N/A, {symbol}, {start_off}, N/A")
+            print(f"SPAN, {source_start}, N/A, {binary_start}, N/A, {symbol}, {start_off}, N/A")
         elif latest_addr:
             source_end = f"{result['latest_file']}:{result['latest_line']}"
             binary_end = f"0x{latest_addr}"
             symbol = latest_symbol if latest_symbol else "N/A"
             end_off = latest_offset if latest_offset else "N/A"
-            print(f"N/A, {source_end}, N/A, {binary_end}, {symbol}, N/A, {end_off}")
+            print(f"SPAN, N/A, {source_end}, N/A, {binary_end}, {symbol}, N/A, {end_off}")
         else:
             print("Assembly addresses: Not found")
             print(f"(Tried to find addresses for {result['earliest_func']} in {vmlinux_path})")
@@ -1499,8 +1485,8 @@ def batch_process(directory, vmlinux_path, nm_output, readelf_output, max_worker
 
 
 def main():
-    vmlinux_path = "../linux-6.14.0-xkernel/vmlinux"
-    modules_path = "../linux-6.14.0-xkernel/mods/lib/modules/6.14.0-xkernel"
+    vmlinux_path = f"{os.environ.get('HOME')}/linux-6.14.0-xkernel/vmlinux"
+    modules_path = "/lib/modules/6.14.0-xkernel"
 
     if not os.path.exists(vmlinux_path):
         print(f"Error: vmlinux file {vmlinux_path} not found")
