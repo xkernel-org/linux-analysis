@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_schedule_loss_probe.part.0",
+    "offset": "0x6c7c - 0x145",
+    "source_start": "./include/linux/jiffies.h:587",
+    "source_end": "net/ipv4/tcp_output.c:2915"
+  }
+]

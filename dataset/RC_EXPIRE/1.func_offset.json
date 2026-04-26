@@ -1,0 +1,8 @@
+[
+  {
+    "function": "nfsd_prune_bucket_locked",
+    "offset": "0x16 - 0x73",
+    "source_start": "fs/nfsd/nfscache.c:267",
+    "source_end": "fs/nfsd/nfscache.c:282"
+  }
+]

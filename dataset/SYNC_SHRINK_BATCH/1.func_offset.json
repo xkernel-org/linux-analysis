@@ -1,0 +1,8 @@
+[
+  {
+    "function": "mb_cache_entry_create",
+    "offset": "0x1f9 - 0x206",
+    "source_start": "fs/mbcache.c:86",
+    "source_end": "fs/mbcache.c:86"
+  }
+]

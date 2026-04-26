@@ -1,0 +1,8 @@
+[
+  {
+    "function": "pnfs_update_layout",
+    "offset": "0x1153 - 0x1157",
+    "source_start": "fs/nfs/pnfs.c:2304",
+    "source_end": "fs/nfs/pnfs.c:2304"
+  }
+]

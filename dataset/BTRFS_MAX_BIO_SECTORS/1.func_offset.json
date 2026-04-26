@@ -1,0 +1,8 @@
+[
+  {
+    "function": "btrfs_dio_iomap_begin",
+    "offset": "0x92 - 0x1fb",
+    "source_start": "fs/btrfs/direct-io.c:388",
+    "source_end": "fs/btrfs/direct-io.c:604"
+  }
+]

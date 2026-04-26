@@ -1,0 +1,8 @@
+[
+  {
+    "function": "do_tcp_setsockopt",
+    "offset": "0xa98 - 0xa98",
+    "source_start": "net/ipv4/tcp.c:3482",
+    "source_end": "net/ipv4/tcp.c:3482"
+  }
+]

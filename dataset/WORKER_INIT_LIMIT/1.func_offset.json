@@ -1,0 +1,8 @@
+[
+  {
+    "function": "create_worker_cont",
+    "offset": "0xab - 0x327",
+    "source_start": "io_uring/io-wq.c:759",
+    "source_end": "io_uring/io-wq.c:759"
+  }
+]

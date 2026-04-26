@@ -1,0 +1,14 @@
+[
+  {
+    "function": "tcp_cwnd_restart",
+    "offset": "0x1d - 0xba",
+    "source_start": "net/ipv4/tcp_output.c:147",
+    "source_end": "./include/net/tcp.h:1337"
+  },
+  {
+    "function": "tcp_write_xmit",
+    "offset": "0xa0 - 0xa76",
+    "source_start": "net/ipv4/tcp_output.c:2767",
+    "source_end": "net/ipv4/tcp_output.c:2662"
+  }
+]

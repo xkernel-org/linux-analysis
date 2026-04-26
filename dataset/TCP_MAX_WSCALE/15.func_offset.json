@@ -1,0 +1,8 @@
+[
+  {
+    "function": "nf_conntrack_tcp_packet",
+    "offset": "0x1522 - 0x1544",
+    "source_start": "net/netfilter/nf_conntrack_proto_tcp.c:1090",
+    "source_end": "net/netfilter/nf_conntrack_proto_tcp.c:1095"
+  }
+]

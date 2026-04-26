@@ -1,0 +1,8 @@
+[
+  {
+    "function": "shrink_all_memory",
+    "offset": "0x6 - 0x51",
+    "source_start": "mm/vmscan.c:7338",
+    "source_end": "mm/vmscan.c:7338"
+  }
+]

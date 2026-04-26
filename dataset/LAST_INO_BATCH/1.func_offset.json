@@ -1,0 +1,8 @@
+[
+  {
+    "function": "get_next_ino",
+    "offset": "0x1a - 0x1f",
+    "source_start": "fs/inode.c:1144",
+    "source_end": "fs/inode.c:1144"
+  }
+]

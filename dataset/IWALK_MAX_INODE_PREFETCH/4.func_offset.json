@@ -1,0 +1,8 @@
+[
+  {
+    "function": "xfs_iwalk_threaded",
+    "offset": "0xad - 0x18b",
+    "source_start": "fs/xfs/xfs_iwalk.c:661",
+    "source_end": "fs/xfs/xfs_iwalk.c:679"
+  }
+]

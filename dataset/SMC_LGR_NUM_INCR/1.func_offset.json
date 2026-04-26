@@ -1,0 +1,8 @@
+[
+  {
+    "function": "smc_conn_create",
+    "offset": "0x592 - 0x5d4",
+    "source_start": "net/smc/smc_core.c:919",
+    "source_end": "net/smc/smc_core.c:920"
+  }
+]

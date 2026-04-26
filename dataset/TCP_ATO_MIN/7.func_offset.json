@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_event_data_recv",
+    "offset": "0x1de - 0x17d",
+    "source_start": "net/ipv4/tcp_input.c:845",
+    "source_end": "net/ipv4/tcp_input.c:806"
+  }
+]

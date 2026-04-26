@@ -1,0 +1,8 @@
+[
+  {
+    "function": "xfs_inodegc_shrinker_count",
+    "offset": "0x79 - 0xad",
+    "source_start": "fs/xfs/xfs_icache.c:2289",
+    "source_end": "fs/xfs/xfs_icache.c:2289"
+  }
+]

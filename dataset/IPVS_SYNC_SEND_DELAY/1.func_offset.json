@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__sysvec_hyperv_reenlightenment",
+    "offset": "0x15 - 0x15",
+    "source_start": "./include/linux/workqueue.h:677",
+    "source_end": "./include/linux/workqueue.h:677"
+  }
+]

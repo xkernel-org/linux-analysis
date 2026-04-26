@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_data_queue",
+    "offset": "0x7d6 - 0x22dc",
+    "source_start": "net/ipv4/tcp_input.c:324",
+    "source_end": "net/ipv4/tcp_input.c:324"
+  }
+]

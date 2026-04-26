@@ -1,0 +1,8 @@
+[
+  {
+    "function": "gss_pipe_downcall",
+    "offset": "0x293 - 0x56c",
+    "source_start": "net/sunrpc/auth_gss/auth_gss.c:193",
+    "source_end": "net/sunrpc/auth_gss/auth_gss.c:246"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "shrink_lruvec",
+    "offset": "0x40d - 0x524",
+    "source_start": "mm/vmscan.c:5735",
+    "source_end": "mm/vmscan.c:5756"
+  }
+]

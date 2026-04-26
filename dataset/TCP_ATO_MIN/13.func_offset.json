@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_delack_timer_handler",
+    "offset": "0x100 - 0x105",
+    "source_start": "net/ipv4/tcp_timer.c:340",
+    "source_end": "net/ipv4/tcp_timer.c:340"
+  }
+]

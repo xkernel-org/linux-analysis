@@ -1,0 +1,8 @@
+[
+  {
+    "function": "do_sys_poll",
+    "offset": "0x1b6 - 0x512",
+    "source_start": "fs/select.c:893",
+    "source_end": "fs/select.c:958"
+  }
+]

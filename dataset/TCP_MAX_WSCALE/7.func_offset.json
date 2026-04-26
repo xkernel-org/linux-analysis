@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_parse_options",
+    "offset": "0x341 - 0x3af",
+    "source_start": "net/ipv4/tcp_input.c:4238",
+    "source_end": "net/ipv4/tcp_input.c:4238"
+  }
+]

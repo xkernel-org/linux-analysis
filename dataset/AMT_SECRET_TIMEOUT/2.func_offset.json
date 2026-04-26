@@ -1,0 +1,8 @@
+[
+  {
+    "function": "amt_dev_open",
+    "offset": "0x12f - 0x5247",
+    "source_start": "./include/linux/workqueue.h:692",
+    "source_end": "./include/linux/workqueue.h:692"
+  }
+]

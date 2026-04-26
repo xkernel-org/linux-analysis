@@ -1,0 +1,8 @@
+[
+  {
+    "function": "pcpu_alloc_noprof",
+    "offset": "0x1e8 - 0x250",
+    "source_start": "mm/percpu.c:1811",
+    "source_end": "mm/percpu.c:1816"
+  }
+]

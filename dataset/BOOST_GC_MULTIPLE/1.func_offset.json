@@ -1,0 +1,8 @@
+[
+  {
+    "function": "do_garbage_collect",
+    "offset": "0x1351 - 0x37c",
+    "source_start": "fs/f2fs/gc.c:1750",
+    "source_end": "fs/f2fs/gc.c:1790"
+  }
+]

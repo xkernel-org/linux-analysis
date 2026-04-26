@@ -1,0 +1,14 @@
+[
+  {
+    "function": "blk_mq_init_tags",
+    "offset": "0x108 - 0x11a",
+    "source_start": "./include/linux/sbitmap.h:428",
+    "source_end": "./include/linux/sbitmap.h:188"
+  },
+  {
+    "function": "kyber_init_sched",
+    "offset": "0x282 - 0x28d",
+    "source_start": "block/kyber-iosched.c:398",
+    "source_end": "block/kyber-iosched.c:398"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "disk_update_zone_resources",
+    "offset": "0x124 - 0x17f",
+    "source_start": "block/blk-zoned.c:1529",
+    "source_end": "block/blk-zoned.c:1558"
+  }
+]

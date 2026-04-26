@@ -1,0 +1,8 @@
+[
+  {
+    "function": "pie_process_dequeue",
+    "offset": "0xb4 - 0xba",
+    "source_start": "net/sched/sch_pie.c:257",
+    "source_end": "net/sched/sch_pie.c:257"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "bh_worker",
+    "offset": "0xc0 - 0x25c",
+    "source_start": "kernel/workqueue.c:3575",
+    "source_end": "kernel/workqueue.c:3581"
+  }
+]

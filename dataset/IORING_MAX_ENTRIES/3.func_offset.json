@@ -1,0 +1,8 @@
+[
+  {
+    "function": "io_uring_fill_params",
+    "offset": "0x7b - 0x80",
+    "source_start": "io_uring/io_uring.c:3571",
+    "source_end": "io_uring/io_uring.c:3571"
+  }
+]

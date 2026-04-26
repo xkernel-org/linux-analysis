@@ -1,0 +1,8 @@
+[
+  {
+    "function": "shrink_node",
+    "offset": "0x670 - 0x679",
+    "source_start": "mm/vmscan.c:5825",
+    "source_end": "mm/vmscan.c:5825"
+  }
+]

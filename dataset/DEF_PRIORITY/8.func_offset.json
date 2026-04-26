@@ -1,0 +1,8 @@
+[
+  {
+    "function": "try_to_free_pages",
+    "offset": "0xc - 0xa1",
+    "source_start": "mm/vmscan.c:6518",
+    "source_end": "mm/vmscan.c:6518"
+  }
+]

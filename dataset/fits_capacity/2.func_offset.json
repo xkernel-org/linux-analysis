@@ -1,0 +1,8 @@
+[
+  {
+    "function": "select_task_rq_fair",
+    "offset": "0x5fe - 0x2099",
+    "source_start": "kernel/sched/fair.c:4983",
+    "source_end": "kernel/sched/fair.c:7847"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__sysvec_hyperv_reenlightenment",
+    "offset": "0x3da125 - 0x15",
+    "source_start": "mm/slab_common.c:1633",
+    "source_end": "./include/linux/workqueue.h:677"
+  }
+]

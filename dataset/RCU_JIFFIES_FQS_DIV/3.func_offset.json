@@ -1,0 +1,8 @@
+[
+  {
+    "function": "rcu_init_geometry",
+    "offset": "0x56 - 0x8b",
+    "source_start": "kernel/rcu/tree.c:4687",
+    "source_end": "kernel/rcu/tree.c:4695"
+  }
+]

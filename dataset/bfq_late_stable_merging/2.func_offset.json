@@ -1,0 +1,8 @@
+[
+  {
+    "function": "bfq_setup_cooperator",
+    "offset": "0xcf - 0x352",
+    "source_start": "block/bfq-iosched.c:2950",
+    "source_end": "block/bfq-iosched.c:2952"
+  }
+]

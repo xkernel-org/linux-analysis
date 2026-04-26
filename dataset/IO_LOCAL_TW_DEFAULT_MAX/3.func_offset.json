@@ -1,0 +1,8 @@
+[
+  {
+    "function": "io_uring_try_cancel_requests",
+    "offset": "0x97b - 0x152",
+    "source_start": "io_uring/io_uring.c:2525",
+    "source_end": "io_uring/io_uring.c:1354"
+  }
+]

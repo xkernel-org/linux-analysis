@@ -1,0 +1,8 @@
+[
+  {
+    "function": "sg_io",
+    "offset": "0x2dd - 0x2e3",
+    "source_start": "drivers/scsi/scsi_ioctl.c:382",
+    "source_end": "drivers/scsi/scsi_ioctl.c:382"
+  }
+]

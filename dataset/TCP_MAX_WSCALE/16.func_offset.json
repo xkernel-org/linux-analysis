@@ -1,0 +1,20 @@
+[
+  {
+    "function": "ipv4_synproxy_hook",
+    "offset": "0x1cb - 0x565",
+    "source_start": "net/netfilter/nf_synproxy_core.c:711",
+    "source_end": "net/netfilter/nf_synproxy_core.c:738"
+  },
+  {
+    "function": "ipv6_synproxy_hook",
+    "offset": "0x1f6 - 0x51d",
+    "source_start": "net/netfilter/nf_synproxy_core.c:1134",
+    "source_end": "net/netfilter/nf_synproxy_core.c:1161"
+  },
+  {
+    "function": "synproxy_tg4",
+    "offset": "0x16b - 0x182",
+    "source_start": "net/ipv4/netfilter/ipt_SYNPROXY.c:38",
+    "source_end": "net/ipv4/netfilter/ipt_SYNPROXY.c:44"
+  }
+]

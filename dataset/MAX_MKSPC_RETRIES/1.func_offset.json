@@ -1,0 +1,8 @@
+[
+  {
+    "function": "ubifs_budget_space",
+    "offset": "0x4a2 - 0x4b0",
+    "source_start": "fs/ubifs/budget.c:151",
+    "source_end": "fs/ubifs/budget.c:151"
+  }
+]

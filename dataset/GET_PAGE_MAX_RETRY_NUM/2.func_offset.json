@@ -1,0 +1,8 @@
+[
+  {
+    "function": "get_hwpoison_page",
+    "offset": "0x3aa - 0x3ae",
+    "source_start": "mm/memory-failure.c:1450",
+    "source_end": "mm/memory-failure.c:1450"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__get_secs_required",
+    "offset": "0x661d4 - 0x84",
+    "source_start": "fs/f2fs/segment.c:5627",
+    "source_end": "fs/f2fs/f2fs.h:4604"
+  }
+]

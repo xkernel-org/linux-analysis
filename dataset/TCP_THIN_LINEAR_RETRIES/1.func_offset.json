@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_retransmit_timer",
+    "offset": "0x93c - 0x943",
+    "source_start": "net/ipv4/tcp_timer.c:663",
+    "source_end": "net/ipv4/tcp_timer.c:663"
+  }
+]

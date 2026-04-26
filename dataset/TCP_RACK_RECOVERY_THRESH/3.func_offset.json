@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_rack_update_reo_wnd",
+    "offset": "0x4d - 0x5f",
+    "source_start": "net/ipv4/tcp_recovery.c:206",
+    "source_end": "net/ipv4/tcp_recovery.c:206"
+  }
+]

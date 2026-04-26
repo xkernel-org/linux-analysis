@@ -1,0 +1,8 @@
+[
+  {
+    "function": "pie_dump_stats",
+    "offset": "0x9e - 0x91",
+    "source_start": "net/sched/sch_pie.c:518",
+    "source_end": "net/sched/sch_pie.c:517"
+  }
+]

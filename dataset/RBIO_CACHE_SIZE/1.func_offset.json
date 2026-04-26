@@ -1,0 +1,8 @@
+[
+  {
+    "function": "unlock_stripe",
+    "offset": "0x27a - 0x282",
+    "source_start": "fs/btrfs/raid56.c:567",
+    "source_end": "fs/btrfs/raid56.c:567"
+  }
+]

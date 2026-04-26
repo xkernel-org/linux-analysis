@@ -1,0 +1,38 @@
+[
+  {
+    "function": "cookie_v4_check",
+    "offset": "0x5e6 - 0x9b6f6",
+    "source_start": "net/ipv4/syncookies.c:378",
+    "source_end": "net/ipv4/syncookies.c:258"
+  },
+  {
+    "function": "cookie_v6_check",
+    "offset": "0x548 - 0x5fc",
+    "source_start": "net/ipv6/syncookies.c:152",
+    "source_end": "net/ipv6/syncookies.c:156"
+  },
+  {
+    "function": "tcp_check_req",
+    "offset": "0x24c - 0x486",
+    "source_start": "net/ipv4/tcp_minisocks.c:675",
+    "source_end": "net/ipv4/tcp_minisocks.c:868"
+  },
+  {
+    "function": "tcp_conn_request",
+    "offset": "0x27a - 0x9c8",
+    "source_start": "net/ipv4/tcp_input.c:7268",
+    "source_end": "net/ipv4/tcp_input.c:7311"
+  },
+  {
+    "function": "tcp_rcv_state_process",
+    "offset": "0xe3a - 0x991",
+    "source_start": "net/ipv4/tcp_input.c:6379",
+    "source_end": "net/ipv4/tcp_input.c:6400"
+  },
+  {
+    "function": "tcp_timewait_state_process",
+    "offset": "0x210 - 0x83",
+    "source_start": "net/ipv4/tcp_minisocks.c:113",
+    "source_end": "net/ipv4/tcp_minisocks.c:237"
+  }
+]

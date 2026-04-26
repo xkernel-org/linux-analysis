@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__tcp_transmit_skb",
+    "offset": "0x45e - 0x465",
+    "source_start": "./include/net/tcp.h:369",
+    "source_end": "./include/net/tcp.h:369"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "ip_vs_sync_conn",
+    "offset": "0x591 - 0x872",
+    "source_start": "net/netfilter/ipvs/ip_vs_sync.c:375",
+    "source_end": "net/netfilter/ipvs/ip_vs_sync.c:375"
+  }
+]

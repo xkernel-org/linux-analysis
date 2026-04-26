@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__io_napi_busy_loop",
+    "offset": "0x104 - 0x2c1",
+    "source_start": "io_uring/napi.c:170",
+    "source_end": "io_uring/napi.c:170"
+  }
+]

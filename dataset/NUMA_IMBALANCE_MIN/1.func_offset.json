@@ -1,0 +1,8 @@
+[
+  {
+    "function": "sched_balance_find_dst_group",
+    "offset": "0xa7c - 0xa87",
+    "source_start": "kernel/sched/fair.c:1420",
+    "source_end": "kernel/sched/fair.c:1427"
+  }
+]

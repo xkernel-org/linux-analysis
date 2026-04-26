@@ -1,0 +1,8 @@
+[
+  {
+    "function": "should_numa_migrate_memory",
+    "offset": "0x25a - 0x38a",
+    "source_start": "kernel/sched/fair.c:1964",
+    "source_end": "kernel/sched/fair.c:1964"
+  }
+]

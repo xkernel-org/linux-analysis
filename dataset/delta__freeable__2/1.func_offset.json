@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__pfx_perf_trace_mm_shrink_slab_end",
+    "offset": "0x153c8 - 0x10",
+    "source_start": "mm/shrinker.c:405",
+    "source_end": "./include/trace/events/vmscan.h:244"
+  }
+]

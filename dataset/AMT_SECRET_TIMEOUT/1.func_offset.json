@@ -1,0 +1,8 @@
+[
+  {
+    "function": "amt_secret_work",
+    "offset": "0x37 - 0x5de7",
+    "source_start": "./include/linux/workqueue.h:692",
+    "source_end": "./include/linux/workqueue.h:692"
+  }
+]

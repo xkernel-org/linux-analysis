@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_send_dupack",
+    "offset": "0x9f - 0x895c",
+    "source_start": "net/ipv4/tcp_input.c:324",
+    "source_end": "net/ipv4/tcp_input.c:324"
+  }
+]

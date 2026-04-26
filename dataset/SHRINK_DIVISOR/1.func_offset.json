@@ -1,0 +1,8 @@
+[
+  {
+    "function": "mb_cache_shrink_worker",
+    "offset": "0x6 - 0x15",
+    "source_start": "fs/mbcache.c:346",
+    "source_end": "fs/mbcache.c:346"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_rcv_state_process",
+    "offset": "0x3ea - 0x3ff",
+    "source_start": "net/ipv4/tcp_input.c:313",
+    "source_end": "net/ipv4/tcp_input.c:315"
+  }
+]

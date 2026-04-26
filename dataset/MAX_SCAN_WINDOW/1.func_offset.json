@@ -1,0 +1,8 @@
+[
+  {
+    "function": "task_scan_start",
+    "offset": "0x1f - 0xc8d9",
+    "source_start": "kernel/sched/fair.c:1519",
+    "source_end": "kernel/sched/fair.c:1519"
+  }
+]

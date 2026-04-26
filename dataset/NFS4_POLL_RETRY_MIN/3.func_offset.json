@@ -1,0 +1,80 @@
+[
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x55 - 0x619",
+    "source_start": "fs/nfs/nfs4proc.c:712",
+    "source_end": "fs/nfs/nfs4proc.c:5014"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x55 - 0x762",
+    "source_start": "fs/nfs/nfs4proc.c:712",
+    "source_end": "fs/nfs/nfs4proc.c:4970"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x55 - 0x7e",
+    "source_start": "fs/nfs/nfs4proc.c:712",
+    "source_end": "fs/nfs/nfs4proc.c:721"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x68 - 0x178",
+    "source_start": "fs/nfs/nfs4proc.c:716",
+    "source_end": "fs/nfs/nfs4proc.c:7858"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x68 - 0x25f",
+    "source_start": "fs/nfs/nfs4proc.c:716",
+    "source_end": "fs/nfs/nfs4proc.c:5789"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x68 - 0x387",
+    "source_start": "fs/nfs/nfs4proc.c:716",
+    "source_end": "fs/nfs/nfs4proc.c:10214"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x68 - 0x413",
+    "source_start": "fs/nfs/nfs4proc.c:716",
+    "source_end": "fs/nfs/nfs4proc.c:10542"
+  },
+  {
+    "function": "nfs4_async_handle_error",
+    "offset": "0x68 - 0x4fa",
+    "source_start": "fs/nfs/nfs4proc.c:716",
+    "source_end": "fs/nfs/nfs4proc.c:10045"
+  },
+  {
+    "function": "nfs4_close_done",
+    "offset": "0x2e7 - 0x2eb",
+    "source_start": "fs/nfs/nfs4proc.c:3692",
+    "source_end": "fs/nfs/nfs4proc.c:3692"
+  },
+  {
+    "function": "nfs4_delegreturn_done",
+    "offset": "0x332 - 0x33c",
+    "source_start": "fs/nfs/nfs4proc.c:6766",
+    "source_end": "fs/nfs/nfs4proc.c:6766"
+  },
+  {
+    "function": "nfs4_locku_done",
+    "offset": "0x22a - 0x234",
+    "source_start": "fs/nfs/nfs4proc.c:7122",
+    "source_end": "fs/nfs/nfs4proc.c:7122"
+  },
+  {
+    "function": "nfs4_read_done_cb",
+    "offset": "0xfa - 0xfe",
+    "source_start": "fs/nfs/nfs4proc.c:5552",
+    "source_end": "fs/nfs/nfs4proc.c:5552"
+  },
+  {
+    "function": "nfs4_write_done_cb",
+    "offset": "0x127 - 0x12b",
+    "source_start": "fs/nfs/nfs4proc.c:5669",
+    "source_end": "fs/nfs/nfs4proc.c:5669"
+  }
+]

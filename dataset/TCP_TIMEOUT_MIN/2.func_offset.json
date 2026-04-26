@@ -1,0 +1,8 @@
+[
+  {
+    "function": "sol_tcp_sockopt",
+    "offset": "0x302 - 0x302",
+    "source_start": "net/core/filter.c:5296",
+    "source_end": "net/core/filter.c:5296"
+  }
+]

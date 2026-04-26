@@ -1,0 +1,8 @@
+[
+  {
+    "function": "blk_add_rq_to_plug",
+    "offset": "0xd7 - 0xef",
+    "source_start": "block/blk-mq.c:1382",
+    "source_end": "block/blk-mq.c:1382"
+  }
+]

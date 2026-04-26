@@ -1,0 +1,8 @@
+[
+  {
+    "function": "io_run_task_work_sig",
+    "offset": "0x4b - 0x6b",
+    "source_start": "io_uring/io_uring.c:1354",
+    "source_end": "io_uring/io_uring.c:2360"
+  }
+]

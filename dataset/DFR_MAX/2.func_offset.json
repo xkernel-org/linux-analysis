@@ -1,0 +1,8 @@
+[
+  {
+    "function": "cache_check_rcu",
+    "offset": "0x2b3 - 0x2bd",
+    "source_start": "net/sunrpc/cache.c:690",
+    "source_end": "net/sunrpc/cache.c:690"
+  }
+]

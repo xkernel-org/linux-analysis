@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_send_delayed_ack",
+    "offset": "0xeb - 0xac",
+    "source_start": "net/ipv4/tcp_output.c:4207",
+    "source_end": "net/ipv4/tcp_output.c:4233"
+  }
+]

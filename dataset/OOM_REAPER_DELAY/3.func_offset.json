@@ -1,0 +1,8 @@
+[
+  {
+    "function": "queue_oom_reaper",
+    "offset": "0x71 - 0x71",
+    "source_start": "mm/oom_kill.c:703",
+    "source_end": "mm/oom_kill.c:703"
+  }
+]

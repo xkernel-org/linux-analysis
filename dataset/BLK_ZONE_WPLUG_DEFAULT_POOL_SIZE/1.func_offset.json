@@ -1,0 +1,8 @@
+[
+  {
+    "function": "blk_revalidate_disk_zones",
+    "offset": "0xec - 0x357",
+    "source_start": "block/blk-zoned.c:1479",
+    "source_end": "block/blk-zoned.c:1367"
+  }
+]

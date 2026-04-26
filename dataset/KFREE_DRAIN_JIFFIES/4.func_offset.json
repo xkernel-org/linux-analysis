@@ -1,0 +1,8 @@
+[
+  {
+    "function": "cgroup_pidlist_stop",
+    "offset": "0x21 - 0x21",
+    "source_start": "./include/linux/workqueue.h:692",
+    "source_end": "./include/linux/workqueue.h:692"
+  }
+]

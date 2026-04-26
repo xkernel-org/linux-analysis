@@ -1,0 +1,14 @@
+[
+  {
+    "function": "dump_unreclaimable_slab",
+    "offset": "0x90 - 0x99",
+    "source_start": "mm/slab_common.c:1163",
+    "source_end": "mm/slab_common.c:1164"
+  },
+  {
+    "function": "slab_show",
+    "offset": "0x54 - 0xa3",
+    "source_start": "mm/slab_common.c:1116",
+    "source_end": "mm/slab_common.c:1122"
+  }
+]

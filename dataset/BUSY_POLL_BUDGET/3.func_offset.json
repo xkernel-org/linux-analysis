@@ -1,0 +1,8 @@
+[
+  {
+    "function": "io_napi_sqpoll_busy_poll",
+    "offset": "0xd0 - 0xe1",
+    "source_start": "io_uring/napi.c:170",
+    "source_end": "io_uring/napi.c:170"
+  }
+]

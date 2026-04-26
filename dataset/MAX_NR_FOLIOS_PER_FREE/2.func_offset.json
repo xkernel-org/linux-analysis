@@ -1,0 +1,8 @@
+[
+  {
+    "function": "__tlb_batch_free_encoded_pages",
+    "offset": "0x81 - 0x8a",
+    "source_start": "mm/mmu_gather.c:126",
+    "source_end": "mm/mmu_gather.c:126"
+  }
+]

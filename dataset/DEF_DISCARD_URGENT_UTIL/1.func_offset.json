@@ -1,0 +1,8 @@
+[
+  {
+    "function": "f2fs_build_segment_manager",
+    "offset": "0x92f - 0x936",
+    "source_start": "fs/f2fs/segment.c:2343",
+    "source_end": "fs/f2fs/segment.c:2343"
+  }
+]
