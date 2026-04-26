@@ -1485,15 +1485,27 @@ def batch_process(directory, vmlinux_path, nm_output, readelf_output, max_worker
 
 
 def main():
-    vmlinux_path = f"{os.environ.get('HOME')}/linux-6.14.0-xkernel/vmlinux"
-    modules_path = "/lib/modules/6.14.0-xkernel"
+    # Default paths target the layout used when this repo is run as part of
+    # Xkernel repo, where the kernel is deployed and
+    # modules live under /lib/modules/<kver>.
+    #
+    # For standalone use (this repo run independently), override these via
+    # env vars VMLINUX and MODULES_DIR; the standalone setup typically has:
+    #   VMLINUX=$LINUX_GCC/vmlinux
+    #   MODULES_DIR=$LINUX_GCC/mods/lib/modules/<kver>
+    default_vmlinux = f"{os.environ.get('HOME')}/linux-6.14.0-xkernel/vmlinux"
+    default_modules = "/lib/modules/6.14.0-xkernel"
+    vmlinux_path = os.environ.get('VMLINUX', default_vmlinux)
+    modules_path = os.environ.get('MODULES_DIR', default_modules)
 
     if not os.path.exists(vmlinux_path):
-        print(f"Error: vmlinux file {vmlinux_path} not found")
+        print(f"Error: vmlinux file {vmlinux_path} not found", file=sys.stderr)
+        print(f"Hint: set VMLINUX env var (default: {default_vmlinux})", file=sys.stderr)
         sys.exit(1)
 
     if not os.path.exists(modules_path):
-        print(f"Error: modules directory {modules_path} not found")
+        print(f"Error: modules directory {modules_path} not found", file=sys.stderr)
+        print(f"Hint: set MODULES_DIR env var (default: {default_modules})", file=sys.stderr)
         sys.exit(1)
 
     if len(sys.argv) < 2:
