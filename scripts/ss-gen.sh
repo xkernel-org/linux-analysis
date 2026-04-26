@@ -20,7 +20,10 @@
 # Usage:
 #   bash scripts/ss-gen.sh <path/to/X.input.txt>
 #
-# Produces <path/to/X.output.txt> alongside the input file.
+# Produces, alongside the input file:
+#   <path/to/X.output.txt>          - dataflow analysis log (stage 1)
+#   <path/to/X.func_offset.json>    - resolved {function, offset, source_*}
+#                                     entries (stage 2)
 
 set -e
 
@@ -49,5 +52,6 @@ echo "[ss-gen] (1/2) dataflow analysis: $INPUT_ABS -> $OUTPUT"
 # ss-analysis.sh runs `opt` whose pass output goes to stderr; capture both.
 bash "$SCRIPT_DIR/ss-analysis.sh" "$INPUT_ABS" >"$OUTPUT" 2>&1
 
-echo "[ss-gen] (2/2) IR -> assembly mapping: $OUTPUT"
+FUNC_OFFSET_JSON="${OUTPUT%.output.txt}.func_offset.json"
+echo "[ss-gen] (2/2) IR -> assembly mapping: $OUTPUT -> $FUNC_OFFSET_JSON"
 python3 "$SCRIPT_DIR/ir_to_assembly.py" "$OUTPUT"

@@ -19,6 +19,7 @@ import sys
 import re
 import subprocess
 import os
+import json
 from pathlib import Path
 import glob
 import pickle
@@ -1332,7 +1333,53 @@ def process_single_result(result, vmlinux_path, nm_output, readelf_output, verbo
     }
 
 
-def process_single_file(output_file, vmlinux_path, nm_output, readelf_output, verbose=True, symbol_to_module=None, module_nm_cache=None, module_readelf_cache=None):
+def write_func_offset_json(output_file, results):
+    """Write a <name>.func_offset.json file alongside <name>.output.txt.
+
+    The JSON is a list of {function, offset, source_start, source_end}
+    entries derived from the processed results. Returns the JSON path on
+    success, or None if the output file path is not a recognized
+    *.output.txt path.
+    """
+    if not output_file.endswith('.output.txt'):
+        return None
+
+    json_path = output_file[:-len('.output.txt')] + '.func_offset.json'
+
+    if results is None:
+        results_list = []
+    elif isinstance(results, list):
+        results_list = results
+    else:
+        results_list = [results]
+
+    entries = []
+    for res in results_list:
+        if not res or res.get('status') != 'SUCCESS':
+            continue
+        if not res.get('start_offset') or not res.get('end_offset'):
+            continue
+
+        function_name = res.get('start_symbol') or res.get('function')
+        offset = f"{res['start_offset']} - {res['end_offset']}"
+        source_start = f"{res['earliest_file']}:{res['earliest_line']}"
+        source_end = f"{res['latest_file']}:{res['latest_line']}"
+
+        entries.append({
+            "function": function_name,
+            "offset": offset,
+            "source_start": source_start,
+            "source_end": source_end,
+        })
+
+    with open(json_path, 'w') as f:
+        json.dump(entries, f, indent=2)
+
+    print(f"Wrote {json_path} ({len(entries)} entr{'y' if len(entries) == 1 else 'ies'})", file=sys.stderr)
+    return json_path
+
+
+def process_single_file(output_file, vmlinux_path, nm_output, readelf_output, verbose=True, symbol_to_module=None, module_nm_cache=None, module_readelf_cache=None, write_json=True):
     """Process a single output file and return the results."""
     if not os.path.exists(output_file):
         if verbose:
@@ -1345,7 +1392,10 @@ def process_single_file(output_file, vmlinux_path, nm_output, readelf_output, ve
     if error:
         if verbose:
             print(f"Error: {error}")
-        return {"status": "ERROR", "file": output_file, "error": error}
+        err_result = {"status": "ERROR", "file": output_file, "error": error}
+        if write_json:
+            write_func_offset_json(output_file, err_result)
+        return err_result
 
     # Check if we have multiple results (list) or single result (dict)
     if isinstance(parsed_result, list):
@@ -1363,6 +1413,8 @@ def process_single_file(output_file, vmlinux_path, nm_output, readelf_output, ve
                 )
                 func_result["file"] = output_file
                 all_results.append(func_result)
+        if write_json:
+            write_func_offset_json(output_file, all_results)
         return all_results
     else:
         # Single function case
@@ -1371,6 +1423,8 @@ def process_single_file(output_file, vmlinux_path, nm_output, readelf_output, ve
             symbol_to_module, module_nm_cache, module_readelf_cache
         )
         result["file"] = output_file
+        if write_json:
+            write_func_offset_json(output_file, result)
         return result
 
 
