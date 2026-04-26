@@ -15,11 +15,23 @@ HOST_GID=${HOST_GID:-1000}
 USER_NAME=builder
 GROUP_NAME=builder
 
+# Evict any existing user holding the target UID (must happen before groupdel)
+existing=$(getent passwd "$HOST_UID" | cut -d: -f1)
+if [ -n "$existing" ] && [ "$existing" != "$USER_NAME" ]; then
+  userdel "$existing"
+fi
+
+# Evict any existing group holding the target GID
+existing_group=$(getent group "$HOST_GID" | cut -d: -f1)
+if [ -n "$existing_group" ] && [ "$existing_group" != "$GROUP_NAME" ]; then
+  groupdel "$existing_group"
+fi
+
 if ! getent group "$HOST_GID" >/dev/null; then
   groupadd -g "$HOST_GID" "$GROUP_NAME"
 fi
 
-if ! id -u "$HOST_UID" >/dev/null 2>&1; then
+if ! id -u "$USER_NAME" >/dev/null 2>&1; then
   useradd -m -u "$HOST_UID" -g "$HOST_GID" -s /bin/bash "$USER_NAME"
 fi
 
