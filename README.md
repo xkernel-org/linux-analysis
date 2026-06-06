@@ -1,18 +1,28 @@
+**Targeting Linux 6.8.** Both modes assume the host is running a 6.8.x kernel
+with `/boot/config-$(uname -r)` available.
+
+There are two ways to set up the analysis tree:
+
+* **Integrated with Xkernel** (the kernel is already built by Xkernel's
+  `scripts/install_deps.sh` at `~/linux-6.8.0`):
+
+  ```shell
+  bash scripts/setup.sh
+  ```
+
+* **Standalone** (no Xkernel checkout; mirrors Xkernel's GCC kernel-build
+  steps to produce `~/linux-6.8.0` itself):
+
+  ```shell
+  bash scripts/setup-standalone.sh
+  ```
+
+As prompted, log out of the current shell and log back in again.
+
+Both modes stage `$LINUX_WLLVM = $WORKDIR/linux-6.8.0-wllvm` as a copy of
+`$LINUX_GCC = ~/linux-6.8.0`. Build the wllvm bitcode for analysis:
+
 ```shell
-# FIXME change to GitHub link once publicized
-# 12 min on c6420
-wget 'https://mir.cs.illinois.edu/~wentaoz5/ss-public/scripts/setup-standalone.sh' -O- | bash
-```
-
-As prompted, log out the current shell and log back in again.
-
-Build Linux kernel first for deployment with GNU toolchain, then for
-whole-program analysis with [wllvm](https://github.com/travitch/whole-program-llvm).
-
-```shell
-# 1 hour on c6420
-bash $WORKDIR/linux-analysis/scripts/build-with-gcc-outer.sh
-# 2 hour 36 min on c6420
 bash $WORKDIR/linux-analysis/scripts/build-with-wllvm.sh
 ```
 

@@ -1,8 +1,17 @@
 #!/bin/bash
+#
+# Integrated setup: linux-analysis as a step inside the Xkernel pipeline.
+#
+# Targets Linux 6.8. Reuses the GCC-built kernel that Xkernel's
+# scripts/install_deps.sh already produced at $HOME/linux-6.8.0. If that
+# directory or its vmlinux is missing, run Xkernel's installer first
+# (or run setup-standalone.sh, which mirrors the same build steps).
 
-if [[ ! -d $HOME/linux-6.14.0-src || ! -d $HOME/linux-6.14.0-xkernel ]]; then
-    echo "Error: Linux source code or GCC build directory not found."
-    echo "Please run Xkernel setup first, or run 'setup-standalone.sh' to setup analysis individually."
+LINUX_GCC=$HOME/linux-6.8.0
+
+if [[ ! -f $LINUX_GCC/vmlinux ]]; then
+    echo "Error: $LINUX_GCC/vmlinux not found."
+    echo "Run Xkernel's scripts/install_deps.sh first, or use setup-standalone.sh."
     exit 1
 fi
 
@@ -14,9 +23,9 @@ set -ex
 
 sudo apt update
 
-# For building Ubuntu kernel using GNU toolchain
+# For building the Ubuntu kernel using the GNU toolchain (mirrors Xkernel deps)
 sudo apt install -yq git fakeroot build-essential ncurses-dev xz-utils \
-    libssl-dev bc flex libelf-dev bison rsync dwarves devscripts
+    libssl-dev bc flex libelf-dev bison dwarves devscripts
 
 # Misc
 sudo apt install -yq cmake bear
@@ -56,9 +65,8 @@ fi
 #
 
 export WORKDIR=$HOME/linux-analysis-workdir
-export LINUX_SOURCE=$HOME/linux-6.14.0-src
-export LINUX_GCC=$HOME/linux-6.14.0-xkernel
-export LINUX_WLLVM=$WORKDIR/linux-6.14.0-wllvm
+export LINUX_GCC=$HOME/linux-6.8.0
+export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
@@ -69,9 +77,8 @@ if ! grep -q "### Xkernel Linux analysis" $HOME/.bashrc >/dev/null 2>&1; then
 ### Xkernel Linux analysis
 
 export WORKDIR=$HOME/linux-analysis-workdir
-export LINUX_SOURCE=$HOME/linux-6.14.0-src
-export LINUX_GCC=$HOME/linux-6.14.0-xkernel
-export LINUX_WLLVM=$WORKDIR/linux-6.14.0-wllvm
+export LINUX_GCC=$HOME/linux-6.8.0
+export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
@@ -80,25 +87,27 @@ fi
 
 mkdir -p $WORKDIR
 
+source "$(dirname "${BASH_SOURCE[0]}")/_lib.sh"
+
 #
 # Clone the analysis repository
 #
 
 if [[ ! -d $WORKDIR/linux-analysis ]]; then
     git clone git@github.com:xkernel-org/linux-analysis.git $WORKDIR/linux-analysis
+    cd $WORKDIR/linux-analysis
+    git fetch
+    git reset --hard origin/master
 fi
 
-cd $WORKDIR/linux-analysis
-git fetch
-git reset --hard origin/master
-
 #
-# Get Linux source code
+# Stage a clean kernel source tree for the wllvm build. Fetched independently
+# from $LINUX_GCC (which is dirty after Xkernel's GCC build); same recipe as
+# Xkernel's scripts/install_deps.sh.
 #
 
-if [[ ! -f $WORKDIR/.linux-source-done ]]; then
-    cp -r $LINUX_SOURCE $LINUX_WLLVM
-    touch $WORKDIR/.linux-source-done
+if [[ ! -d $LINUX_WLLVM ]]; then
+    apt_source_kernel "$LINUX_WLLVM"
 fi
 
 #

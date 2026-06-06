@@ -11,11 +11,8 @@
 #   b) embedded in the parent xkernel-org/linux-analysis repo
 #
 # Step 1 reads $VMLINUX_BC (defaults to $LINUX_WLLVM/vmlinux-xk-dataset.bc).
-# Step 2 reads $VMLINUX and $MODULES_DIR (defaults to the parent-repo layout
-# at $HOME/linux-6.14.0-xkernel/vmlinux and /lib/modules/6.14.0-xkernel).
-# For standalone runs, set these to the standalone build outputs, e.g.:
-#   export VMLINUX=$LINUX_GCC/vmlinux
-#   export MODULES_DIR=$LINUX_GCC/mods/lib/modules/6.14.0-xkernel
+# Step 2 reads $VMLINUX and $MODULES_DIR (defaults to $LINUX_GCC/vmlinux,
+# i.e. $HOME/linux-6.8.0/vmlinux, and /lib/modules/$(uname -r)).
 #
 # Usage:
 #   bash scripts/ss-gen.sh <path/to/X.input.txt>

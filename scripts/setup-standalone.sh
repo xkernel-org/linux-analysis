@@ -1,6 +1,22 @@
 #!/bin/bash
+#
+# Standalone setup: linux-analysis run independently of Xkernel.
+#
+# Targets Linux 6.8. Mirrors the GCC build steps from Xkernel's
+# scripts/install_deps.sh so the resulting $LINUX_GCC tree is byte-compatible
+# with what an integrated run would have used.
 
 set -ex
+
+KERNEL_RELEASE=$(uname -r)
+case "$KERNEL_RELEASE" in
+    6.8.*) ;;
+    *)
+        echo "Warning: running kernel ($KERNEL_RELEASE) is not 6.8.x."
+        echo "linux-analysis currently targets Linux 6.8 only. Aborting."
+        exit 1
+        ;;
+esac
 
 #
 # Install prerequisites
@@ -8,12 +24,12 @@ set -ex
 
 sudo apt update
 
-# For building Ubuntu kernel using GNU toolchain
+# Kernel-build deps (mirrors Xkernel scripts/install_deps.sh)
 sudo apt install -yq git fakeroot build-essential ncurses-dev xz-utils \
-    libssl-dev bc flex libelf-dev bison rsync dwarves devscripts
+    libssl-dev bc flex libelf-dev bison dwarves devscripts dpkg-dev
 
 # Misc
-sudo apt install -yq cmake bear
+sudo apt install -yq cmake bear wget
 
 # LLVM
 wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh
@@ -46,38 +62,12 @@ EOF
 fi
 
 #
-# Install Docker
-#
-
-# Add Docker's official GPG key:
-sudo apt update
-sudo apt install -yq ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-Types: deb
-URIs: https://download.docker.com/linux/ubuntu
-Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-Components: stable
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
-
-sudo apt update
-sudo apt install -yq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-sudo usermod -aG docker $USER
-
-#
 # Environment variables
 #
 
 export WORKDIR=$HOME/linux-analysis-workdir
-export LINUX_SOURCE=$WORKDIR/linux-source
-export LINUX_GCC=$WORKDIR/linux-gcc
-export LINUX_WLLVM=$WORKDIR/linux-wllvm
+export LINUX_GCC=$HOME/linux-6.8.0
+export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
@@ -88,9 +78,8 @@ if ! grep -q "### Linux analysis" $HOME/.bashrc >/dev/null 2>&1; then
 ### Linux analysis
 
 export WORKDIR=$HOME/linux-analysis-workdir
-export LINUX_SOURCE=$WORKDIR/linux-source
-export LINUX_GCC=$WORKDIR/linux-gcc
-export LINUX_WLLVM=$WORKDIR/linux-wllvm
+export LINUX_GCC=$HOME/linux-6.8.0
+export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
@@ -99,45 +88,55 @@ fi
 
 mkdir -p $WORKDIR
 
+source "$(dirname "${BASH_SOURCE[0]}")/_lib.sh"
+
 #
 # Clone this repository
 #
 
 if [[ ! -d $WORKDIR/linux-analysis ]]; then
     git clone git@github.com:xkernel-org/linux-analysis.git $WORKDIR/linux-analysis
-fi
-
-cd $WORKDIR/linux-analysis
-git fetch
-git reset --hard origin/master
-
-#
-# Get Linux source code
-#
-
-if [[ ! -f $WORKDIR/.linux-source-done ]]; then
-    TMPDIR=$(mktemp -d)
-    mkdir -p $TMPDIR
-    cd $TMPDIR
-    dget -u https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/linux/6.14.0-15.15/linux_6.14.0-15.15.dsc
-    cp -r linux-6.14.0 $LINUX_SOURCE
-    cp -r linux-6.14.0 $LINUX_GCC
-    cp -r linux-6.14.0 $LINUX_WLLVM
-    cd $WORKDIR
-    rm -r $TMPDIR
-
-    touch $WORKDIR/.linux-source-done
+    cd $WORKDIR/linux-analysis
+    git fetch
+    git reset --hard origin/master
 fi
 
 #
-# Build the Docker image for GCC build
-#
-# This is particularly containerized (Ubuntu 24.04 base) to achieve the
-# best binary reproducibility as the deployed kernel.
+# Fetch a clean kernel source tree, then materialize $LINUX_WLLVM and
+# $LINUX_GCC from it. The wllvm copy is taken before the GCC build dirties
+# the tree, so a plain `cp -r` is sufficient (no artifact filtering).
 #
 
-cd $WORKDIR/linux-analysis/docker
-sudo docker build -t kernel-builder:24.04 .
+if [[ ! -f $LINUX_GCC/vmlinux || ! -d $LINUX_WLLVM ]]; then
+    STAGING=$(mktemp -d)/linux-src
+    apt_source_kernel "$STAGING"
+
+    if [[ ! -d $LINUX_WLLVM ]]; then
+        cp -r "$STAGING" "$LINUX_WLLVM"
+    fi
+
+    if [[ ! -f $LINUX_GCC/vmlinux ]]; then
+        if [[ ! -d $LINUX_GCC ]]; then
+            mv "$STAGING" "$LINUX_GCC"
+        fi
+        rm -rf "$(dirname "$STAGING")"
+
+        pushd $LINUX_GCC
+        if [[ -f /boot/config-${KERNEL_RELEASE} ]]; then
+            cp /boot/config-${KERNEL_RELEASE} .config
+            scripts/config -d CONFIG_SYSTEM_TRUSTED_KEYS || true
+            scripts/config -d CONFIG_SYSTEM_REVOCATION_KEYS || true
+            make olddefconfig
+        fi
+        /usr/bin/time -v make -j$(nproc)
+        chmod +x ./debian/scripts/sign-module 2>/dev/null || true
+        sudo make modules_install -j$(nproc)
+        sudo make install
+        popd
+    else
+        rm -rf "$(dirname "$STAGING")"
+    fi
+fi
 
 #
 # Build LLVM passes
@@ -161,10 +160,9 @@ cat << EOF
 Setup summary:
 
 * Dependencies for building and analyzing the Linux kernel are installed.
-* Docker is installed. "$USER" is added to "docker" group.
 * Environment variables are set in ~/.bashrc.
-* Source code of Linux and our analysis tools are downloaded.
-* A Docker image for building the Linux kernel is created.
+* GCC kernel built at $LINUX_GCC.
+* wllvm source tree staged at $LINUX_WLLVM.
 
 Please log out of your current shell and log back in again.
 

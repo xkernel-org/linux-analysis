@@ -1547,8 +1547,9 @@ def main():
     # env vars VMLINUX and MODULES_DIR; the standalone setup typically has:
     #   VMLINUX=$LINUX_GCC/vmlinux
     #   MODULES_DIR=$LINUX_GCC/mods/lib/modules/<kver>
-    default_vmlinux = f"{os.environ.get('HOME')}/linux-6.14.0-xkernel/vmlinux"
-    default_modules = "/lib/modules/6.14.0-xkernel"
+    default_vmlinux = os.environ.get('LINUX_GCC',
+                                     f"{os.environ.get('HOME')}/linux-6.8.0") + "/vmlinux"
+    default_modules = f"/lib/modules/{os.uname().release}"
     vmlinux_path = os.environ.get('VMLINUX', default_vmlinux)
     modules_path = os.environ.get('MODULES_DIR', default_modules)
 
