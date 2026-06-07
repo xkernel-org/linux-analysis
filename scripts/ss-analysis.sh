@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 VMLINUX_BC=${VMLINUX_BC:-$LINUX_WLLVM/vmlinux-xk-dataset.bc}
 
