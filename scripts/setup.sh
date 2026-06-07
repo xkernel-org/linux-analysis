@@ -64,9 +64,9 @@ fi
 # Environment variables
 #
 
-export WORKDIR=$HOME/linux-analysis-workdir
-export LINUX_GCC=$HOME/linux-6.8.0
-export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
+LINUX_GCC=$HOME/linux-6.8.0
+LINUX_WLLVM=$HOME/linux-analysis-workdir/linux-6.8.0-wllvm
+export LINUX_GCC LINUX_WLLVM
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
@@ -76,29 +76,23 @@ if ! grep -q "### Xkernel Linux analysis" $HOME/.bashrc >/dev/null 2>&1; then
 
 ### Xkernel Linux analysis
 
-export WORKDIR=$HOME/linux-analysis-workdir
 export LINUX_GCC=$HOME/linux-6.8.0
-export LINUX_WLLVM=$WORKDIR/linux-6.8.0-wllvm
+export LINUX_WLLVM=$HOME/linux-analysis-workdir/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
 EOF
 fi
 
-mkdir -p $WORKDIR
+mkdir -p "$(dirname "$LINUX_WLLVM")"
 
 source "$(dirname "${BASH_SOURCE[0]}")/_lib.sh"
 
-#
-# Clone the analysis repository
-#
-
-if [[ ! -d $WORKDIR/linux-analysis ]]; then
-    git clone git@github.com:xkernel-org/linux-analysis.git $WORKDIR/linux-analysis
-    cd $WORKDIR/linux-analysis
-    git fetch
-    git reset --hard origin/master
-fi
+# This script lives at <linux-analysis>/scripts/setup.sh, so the repo root
+# is the parent directory. Sibling-of-Xkernel convention: no clone here;
+# the user is expected to have already checked out linux-analysis next to
+# Xkernel.
+LINUX_ANALYSIS_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 #
 # Stage a clean kernel source tree for the wllvm build. Fetched independently
@@ -114,7 +108,7 @@ fi
 # Build LLVM passes
 #
 
-cd $WORKDIR/linux-analysis/passes
+cd "$LINUX_ANALYSIS_REPO/passes"
 rm -rf build
 mkdir build
 cd build

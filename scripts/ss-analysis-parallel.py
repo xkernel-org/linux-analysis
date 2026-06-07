@@ -138,8 +138,7 @@ def process_input_file(args: Tuple[Path, int, int, str, dict]) -> Tuple[str, boo
         opt_cmd = [
             '/usr/bin/time', '-o', str(time_statistics), '-v',
             'opt',
-            # FIXME this can be found relative to the current file
-            f'-load-pass-plugin={os.environ["WORKDIR"]}/linux-analysis/passes/build/libTaintTrackerPass.so',
+            f'-load-pass-plugin={config["plugin"]}',
             f'-passes=taint-tracker<{pass_args}>',
             '-disable-output',
             str(input_bc_file)
@@ -169,6 +168,10 @@ def process_input_file(args: Tuple[Path, int, int, str, dict]) -> Tuple[str, boo
         return (str(input_file), False, str(e))
 
 def main():
+    repo_root = Path(__file__).resolve().parents[1]
+    default_dataset = repo_root / 'dataset'
+    default_plugin = repo_root / 'passes' / 'build' / 'libTaintTrackerPass.so'
+
     parser = argparse.ArgumentParser(
         description='Run kernel analysis in parallel on multiple input files'
     )
@@ -178,19 +181,30 @@ def main():
         default=50,
         help=f'Number of parallel jobs (default: 50)'
     )
-    # FIXME directly pass vmlinux.bc
+    parser.add_argument(
+        '--linux-wllvm',
+        type=str,
+        default=os.environ.get('LINUX_WLLVM'),
+        help='wllvm tree containing vmlinux-xk-dataset.bc (default: $LINUX_WLLVM)'
+    )
+    # Kept for backward compatibility; --linux-wllvm is preferred.
     parser.add_argument(
         '--kernel-dir',
         type=str,
-        default=os.environ.get('LINUX_WLLVM'),
-        help='Path to kernel directory (default: $LINUX_WLLVM)'
+        default=None,
+        help=argparse.SUPPRESS,
     )
     parser.add_argument(
         '--input-dir',
         type=str,
-        # FIXME this can be found relative to the current file
-        default=os.path.join(os.environ.get('WORKDIR'), 'linux-analysis/dataset/'),
-        help='Path to input directory (default: $WORKDIR/linux-analysis/dataset/)'
+        default=str(default_dataset),
+        help=f'dataset/ root containing <name>/*.input.txt (default: {default_dataset})'
+    )
+    parser.add_argument(
+        '--plugin',
+        type=str,
+        default=str(default_plugin),
+        help=f'libTaintTrackerPass.so (default: {default_plugin})'
     )
     parser.add_argument(
         '--no-interproc',
@@ -207,18 +221,19 @@ def main():
         action='store_true',
         help='Disable indirect call analysis'
     )
-    # parser.add_argument(
-    #     '--no-whole-kernel',
-    #     action='store_true',
-    #     help='Compile individual files instead of using whole kernel'
-    # )
 
     args = parser.parse_args()
 
-    # Setup environment
-    # os.environ['LLVM_COMPILER'] = 'clang'
+    if args.kernel_dir and not args.linux_wllvm:
+        args.linux_wllvm = args.kernel_dir
+    if not args.linux_wllvm:
+        parser.error("--linux-wllvm is required (or set $LINUX_WLLVM)")
+    if not os.path.exists(args.plugin):
+        parser.error(f"plugin not found: {args.plugin}\n"
+                     f"Build it: cmake -S {repo_root}/passes -B {repo_root}/passes/build && "
+                     f"cmake --build {repo_root}/passes/build")
 
-    kernel_dir = Path(args.kernel_dir)
+    kernel_dir = Path(args.linux_wllvm)
 
     input_dir = Path(args.input_dir)
 
@@ -241,10 +256,10 @@ def main():
     # Configuration
     config = {
         'kernel_dir': str(kernel_dir),
+        'plugin': args.plugin,
         'interproc': 'true' if not args.no_interproc else 'false',
         'upward_interproc': 'true' if not args.no_upward_interproc else 'false',
         'indirect_call': 'true' if not args.no_indirect_call else 'false',
-        # 'whole_kernel': not args.no_whole_kernel,
         'cwd': os.getcwd()
     }
 

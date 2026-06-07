@@ -1539,41 +1539,58 @@ def batch_process(directory, vmlinux_path, nm_output, readelf_output, max_worker
 
 
 def main():
-    # Default paths target the layout used when this repo is run as part of
-    # Xkernel repo, where the kernel is deployed and
-    # modules live under /lib/modules/<kver>.
-    #
-    # For standalone use (this repo run independently), override these via
-    # env vars VMLINUX and MODULES_DIR; the standalone setup typically has:
-    #   VMLINUX=$LINUX_GCC/vmlinux
-    #   MODULES_DIR=$LINUX_GCC/mods/lib/modules/<kver>
+    # vmlinux/modules paths can be provided via flags or env vars; fall back
+    # to defaults that mirror the standalone setup of this repo:
+    #   --vmlinux       PATH (or $VMLINUX,     default $LINUX_GCC/vmlinux,
+    #                   default-default $HOME/linux-6.8.0/vmlinux)
+    #   --modules-dir   PATH (or $MODULES_DIR, default /lib/modules/$(uname -r))
     default_vmlinux = os.environ.get('LINUX_GCC',
                                      f"{os.environ.get('HOME')}/linux-6.8.0") + "/vmlinux"
     default_modules = f"/lib/modules/{os.uname().release}"
-    vmlinux_path = os.environ.get('VMLINUX', default_vmlinux)
-    modules_path = os.environ.get('MODULES_DIR', default_modules)
+
+    import argparse
+    parser = argparse.ArgumentParser(
+        description='Map TaintTrackerPass output (*.output.txt) back to assembly offsets.',
+        usage='%(prog)s [options] <output.txt>\n'
+              '       %(prog)s [options] --batch <directory> [--workers N]\n'
+              '       %(prog)s [options] --generate-cache')
+    parser.add_argument('--vmlinux',
+                        default=os.environ.get('VMLINUX', default_vmlinux),
+                        help=f'vmlinux ELF (default: $VMLINUX or {default_vmlinux})')
+    parser.add_argument('--modules-dir',
+                        default=os.environ.get('MODULES_DIR', default_modules),
+                        help=f'directory of .ko modules '
+                             f'(default: $MODULES_DIR or {default_modules})')
+    parser.add_argument('--batch', metavar='DIR',
+                        help='process all *.output.txt under DIR in parallel')
+    parser.add_argument('--workers', type=int, default=None,
+                        help='parallel workers for --batch (default: CPU count)')
+    parser.add_argument('--generate-cache', action='store_true',
+                        help='regenerate nm/readelf caches and exit')
+    parser.add_argument('output_file', nargs='?',
+                        help='single .output.txt file to process')
+
+    args = parser.parse_args()
+    vmlinux_path = args.vmlinux
+    modules_path = args.modules_dir
 
     if not os.path.exists(vmlinux_path):
         print(f"Error: vmlinux file {vmlinux_path} not found", file=sys.stderr)
-        print(f"Hint: set VMLINUX env var (default: {default_vmlinux})", file=sys.stderr)
+        print(f"Hint: pass --vmlinux PATH or set $VMLINUX (default: {default_vmlinux})",
+              file=sys.stderr)
         sys.exit(1)
 
     if not os.path.exists(modules_path):
         print(f"Error: modules directory {modules_path} not found", file=sys.stderr)
-        print(f"Hint: set MODULES_DIR env var (default: {default_modules})", file=sys.stderr)
-        sys.exit(1)
-
-    if len(sys.argv) < 2:
-        print("Usage: python3 extract_assembly_ranges.py <output_file>")
-        print("       python3 extract_assembly_ranges.py --batch <directory> [--workers N]")
-        print("       python3 extract_assembly_ranges.py --generate-cache")
+        print(f"Hint: pass --modules-dir PATH or set $MODULES_DIR (default: {default_modules})",
+              file=sys.stderr)
         sys.exit(1)
 
     # Get cache directory
     cache_dir = get_cache_dir(vmlinux_path)
 
     # Handle cache generation
-    if sys.argv[1] == "--generate-cache":
+    if args.generate_cache:
         print(f"Generating cache for {vmlinux_path}")
         print(f"Cache directory: {cache_dir}")
         generate_nm_cache(vmlinux_path, cache_dir)
@@ -1590,6 +1607,10 @@ def main():
 
         print("Cache generation complete!")
         sys.exit(0)
+
+    if not args.batch and not args.output_file:
+        parser.print_usage(sys.stderr)
+        sys.exit(2)
 
     # Load vmlinux caches
     nm_output = load_nm_cache(vmlinux_path, cache_dir)
@@ -1611,29 +1632,14 @@ def main():
     # Build symbol-to-module mapping from nm output (more complete than Module.symvers)
     symbol_to_module = build_symbol_to_module_map(module_nm_cache, module_files)
 
-    if sys.argv[1] == "--batch":
-        if len(sys.argv) < 3:
-            print("Usage: python3 extract_assembly_ranges.py --batch <directory> [--workers N]")
-            sys.exit(1)
-
-        directory = sys.argv[2]
-        max_workers = None
-
-        # Check for optional --workers argument
-        if len(sys.argv) >= 5 and sys.argv[3] == "--workers":
-            try:
-                max_workers = int(sys.argv[4])
-                print(f"Using {max_workers} parallel workers")
-            except ValueError:
-                print("Error: --workers argument must be an integer")
-                sys.exit(1)
-
-        batch_process(directory, vmlinux_path, nm_output, readelf_output, max_workers,
+    if args.batch:
+        if args.workers:
+            print(f"Using {args.workers} parallel workers")
+        batch_process(args.batch, vmlinux_path, nm_output, readelf_output, args.workers,
                      symbol_to_module, module_nm_cache, module_readelf_cache)
     else:
-        output_file = sys.argv[1]
-        process_single_file(output_file, vmlinux_path, nm_output, readelf_output, verbose=True,
-                          symbol_to_module=symbol_to_module,
+        process_single_file(args.output_file, vmlinux_path, nm_output, readelf_output,
+                          verbose=True, symbol_to_module=symbol_to_module,
                           module_nm_cache=module_nm_cache, module_readelf_cache=module_readelf_cache)
 
 
