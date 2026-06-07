@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_cubic.c"
+definition_source_file = "net/ipv4/tcp_cubic.c"
+sed_pattern = "s|#define HYSTART_DELAY_MAX\t(16000U)|#define HYSTART_DELAY_MAX\t(8000U)|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/blk-mq.c"
+definition_source_file = "include/linux/blk-mq.h"
+sed_pattern = "s|BLK_MQ_CPU_WORK_BATCH\\t= 8,|BLK_MQ_CPU_WORK_BATCH\\t= 4,|"

@@ -96,20 +96,47 @@ def diff_ll(origin: Path, mutated: Path) -> str:
 _FUNC_RE = re.compile(r"define\s+[^@]*@([a-zA-Z0-9_.]+)\s*\(")
 
 
-def find_function_for_instruction(ll_path: Path, instruction: str) -> str | None:
-    """Walk the .ll file; return the function whose body contains the line."""
-    var_match = re.match(r"^\s*(%\d+)\s*=", instruction)
-    needle = f"{var_match.group(1)} =" if var_match else " ".join(instruction.split()[:3])
+def _normalize_ir(s: str) -> str:
+    """Strip leading SSA result name, trailing !dbg metadata, and normalize
+    all `%N` operand names to `%X` so two structurally identical
+    instructions compare equal regardless of register numbering."""
+    s = re.sub(r"^\s*%\d+\s*=\s*", "", s)
+    s = re.sub(r",?\s*!dbg .*$", "", s)
+    s = re.sub(r"%\d+", "%X", s)
+    return s.strip()
+
+
+def locate(ll_path: Path, instruction: str) -> tuple[str | None, int]:
+    """Return (function, occurrence) for `instruction` in `ll_path`.
+
+    Occurrence is the 1-based index of the matching line among all lines
+    in the same function whose normalized form equals the instruction's
+    normalized form. The diff's `<` line is a verbatim copy, so its exact
+    text (including unique `%N` and `!dbg !N`) matches exactly one .ll
+    line — that pin determines which occurrence we are."""
+    exact = instruction.strip()
+    body = _normalize_ir(instruction)
 
     current = None
+    count_in_fn = 0
+    found_fn = None
+    found_idx = 0
     with open(ll_path) as f:
         for line in f:
             m = _FUNC_RE.search(line)
             if m:
                 current = m.group(1)
-            if needle in line and instruction.strip() in line:
-                return current
-    return None
+                count_in_fn = 0
+                continue
+            if line.startswith("}"):
+                current = None
+                continue
+            if _normalize_ir(line.rstrip("\n")) == body:
+                count_in_fn += 1
+                if line.strip() == exact and found_fn is None:
+                    found_fn = current
+                    found_idx = count_in_fn
+    return found_fn, (found_idx if found_idx else 1)
 
 
 def extract_opcode(instruction: str) -> str | None:
@@ -125,7 +152,27 @@ def extract_opcode(instruction: str) -> str | None:
     return None
 
 
-_VAL_RE = re.compile(r"(?:,|\s)\s*(-?\d+)\s*(?:[,)]|$)")
+def changed_int(old_line: str, new_line: str):
+    """Token-level diff: find the one integer token that changed.
+
+    Returns (old_value_str, new_value_str) or (None, None).
+    """
+    import difflib
+    a = old_line.split()
+    b = new_line.split()
+    sm = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag != "replace":
+            continue
+        # Pair up replaced tokens; find one whose stripped-of-punctuation
+        # form is a different integer.
+        for k in range(min(i2 - i1, j2 - j1)):
+            ot, nt = a[i1 + k], b[j1 + k]
+            om = re.search(r"-?\d+", ot)
+            nm = re.search(r"-?\d+", nt)
+            if om and nm and om.group() != nm.group():
+                return om.group(), nm.group()
+    return None, None
 
 
 def parse_diff(diff_output: str):
@@ -145,45 +192,13 @@ def parse_diff(diff_output: str):
                 new = lines[i][1:].strip()
                 i += 1
             if old and new:
-                om = _VAL_RE.search(old)
-                nm = _VAL_RE.search(new)
-                if om and nm:
-                    yield old, om.group(1), nm.group(1)
+                ov, nv = changed_int(old, new)
+                if ov is not None and nv is not None:
+                    yield old, ov, nv
             continue
         i += 1
 
 
-def occurrence_of(ll_path: Path, function: str, instruction: str) -> int:
-    """How many times does `instruction` (after var renumbering) appear in
-    `function`? For now we use the trailing-tokens hash: drop the `%N =`
-    prefix and the trailing !dbg metadata, then count exact matches inside
-    the function body."""
-    body_pat = re.sub(r"^\s*%\d+\s*=\s*", "", instruction)
-    body_pat = re.sub(r",?\s*!dbg .*$", "", body_pat).strip()
-
-    in_fn = False
-    count = 0
-    matched_index = 0
-    saw = 0
-    with open(ll_path) as f:
-        for line in f:
-            m = _FUNC_RE.search(line)
-            if m:
-                in_fn = (m.group(1) == function)
-                continue
-            if not in_fn:
-                continue
-            if line.startswith("}"):
-                in_fn = False
-                continue
-            stripped = re.sub(r"^\s*%\d+\s*=\s*", "", line.rstrip("\n"))
-            stripped = re.sub(r",?\s*!dbg .*$", "", stripped).strip()
-            if stripped == body_pat:
-                count += 1
-                if instruction.strip() in line:
-                    matched_index = count
-    # If the exact instruction matched once, occurrence is its index; otherwise 1
-    return matched_index if matched_index else 1
 
 
 def write_input(out_path: Path, *, source_file: str, function: str,
@@ -200,13 +215,15 @@ def write_input(out_path: Path, *, source_file: str, function: str,
     print(text, file=sys.stderr)
 
 
-def process_mutation(kdir: Path, tunable_dir: Path, m: dict) -> None:
-    idx = m["index"]
+def process_mutation(kdir: Path, tunable_dir: Path, m: dict, start_idx: int) -> int:
+    """Run one mutation; emit one input.txt per diff hunk.
+
+    Returns the next free index for downstream callers."""
     source_file = m["source_file"]
     defn = m["definition_source_file"]
     sed_pattern = m["sed_pattern"]
 
-    print(f"\n=== {tunable_dir.name} mutation #{idx}: {source_file} ===",
+    print(f"\n=== {tunable_dir.name}: {source_file} (mutate {defn}) ===",
           file=sys.stderr)
 
     # 1. Build origin
@@ -220,7 +237,6 @@ def process_mutation(kdir: Path, tunable_dir: Path, m: dict) -> None:
     shutil.copy2(defn_path, backup)
     try:
         run(["sed", "-i", sed_pattern, str(defn_path)])
-        # Confirm the sed actually changed something
         if subprocess.run(["diff", "-q", str(backup), str(defn_path)],
                           capture_output=True).returncode == 0:
             raise RuntimeError(
@@ -233,30 +249,28 @@ def process_mutation(kdir: Path, tunable_dir: Path, m: dict) -> None:
     finally:
         shutil.move(str(backup), str(defn_path))
 
-    # 4. Diff and parse
+    # 4. Diff and parse all hunks
     diff_text = diff_ll(ll_origin, ll_mutated)
     instructions = list(parse_diff(diff_text))
     if not instructions:
         raise RuntimeError(f"no value-changing diff hunks for {source_file}")
 
-    # 5. Pick the first hunk; emit input.txt
-    instruction, old_val, _new_val = instructions[0]
-    function = find_function_for_instruction(ll_origin, instruction) or "UNKNOWN"
-    opcode = extract_opcode(instruction) or "UNKNOWN"
-    occ = occurrence_of(ll_origin, function, instruction)
+    # 5. Emit one input.txt per hunk
+    idx = start_idx
+    for instruction, old_val, _new_val in instructions:
+        function, occ = locate(ll_origin, instruction)
+        opcode = extract_opcode(instruction) or "UNKNOWN"
 
-    write_input(
-        tunable_dir / f"{idx}.input.txt",
-        source_file=source_file,
-        function=function,
-        opcode=opcode,
-        value=old_val,
-        occurrence=occ,
-    )
-
-    if len(instructions) > 1:
-        print(f"note: {len(instructions)} hunks total; emitted only #1",
-              file=sys.stderr)
+        write_input(
+            tunable_dir / f"{idx}.input.txt",
+            source_file=source_file,
+            function=function or "UNKNOWN",
+            opcode=opcode,
+            value=old_val,
+            occurrence=occ,
+        )
+        idx += 1
+    return idx
 
 
 def main():
@@ -280,8 +294,13 @@ def main():
     with open(spec, "rb") as f:
         cfg = tomllib.load(f)
 
+    # Clear previously-generated input.txt files (stale numbering otherwise)
+    for p in tunable_dir.glob("*.input.txt"):
+        p.unlink()
+
+    next_idx = 1
     for m in cfg.get("mutation", []):
-        process_mutation(kdir, tunable_dir, m)
+        next_idx = process_mutation(kdir, tunable_dir, m, next_idx)
 
 
 if __name__ == "__main__":

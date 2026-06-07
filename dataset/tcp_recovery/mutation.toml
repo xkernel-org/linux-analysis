@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_recovery.c"
+definition_source_file = "net/ipv4/tcp_recovery.c"
+sed_pattern = "s|tcp_min_rtt(tp) >> 2|tcp_min_rtt(tp) >> 3|"

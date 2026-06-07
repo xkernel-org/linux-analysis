@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/blk-mq-sched.c"
+definition_source_file = "block/blk-mq-sched.c"
+sed_pattern = "s|#define BLK_MQ_BUDGET_DELAY\t3|#define BLK_MQ_BUDGET_DELAY\t2|"
