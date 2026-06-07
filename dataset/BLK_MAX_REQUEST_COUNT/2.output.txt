@@ -1,0 +1,43 @@
+=== Taint Tracker Configuration ===
+Function: blk_add_rq_to_plug
+Opcode: select
+Constant: 64
+Verbose: OFF
+Interproc (downward): OFF
+Interproc (upward): ON
+IndirectCall: ON
+ApproxDebugInfo: ON
+Occurrence: 1 (of constant 64)
+
+[SOURCE] Tainting:   %37 = select i1 %36, i16 64, i16 32, <block/blk-mq.c:1383:28> (approx) FUNC=blk_add_rq_to_plug L=0
+[USE] Source instruction in data flow <block/blk-mq.c:1383:28> (approx) FUNC=blk_add_rq_to_plug L=0
+[USE] Processing uses of:   %37 = select i1 %36, i16 64, i16 32,
+  [USE] Taint flows to:   %38 = icmp ult i16 %9, %37, <block/blk-mq.c:1383:28> FUNC=blk_add_rq_to_plug L=0
+[USE] Processing uses of:   %38 = icmp ult i16 %9, %37,
+  [USE] Taint flows to:   br i1 %38, label %39, label %49, <block/blk-mq.c:1383:59> FUNC=blk_add_rq_to_plug L=0
+[NO USE] No uses of:   br i1 %38, label %39, label %49,
+
+=== Maximum Level Statistics ===
+Largest L value: 0
+Number of instructions with L=0: 3
+
+Earliest and latest instructions with L=0 (per function):
+
+blk_add_rq_to_plug:
+  Earliest:   %37 = select i1 %36, i16 64, i16 32, <block/blk-mq.c:1383:28> (approx) FUNC=blk_add_rq_to_plug L=0
+  Latest:   br i1 %38, label %39, label %49, <block/blk-mq.c:1383:59> FUNC=blk_add_rq_to_plug L=0
+
+=== Instruction Count Statistics ===
+Max-level functions (data flow span): 3 instructions
+Other visited functions (total): 0 instructions
+Total: 3 instructions
+Number of max-level functions: 1
+Number of other visited functions: 0
+
+=== Data Flow Span Details ===
+blk_add_rq_to_plug, 9, 3, 9, 5
+
+=== Taint Analysis Complete ===
+
+/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq.ll
+/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq.c

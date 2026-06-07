@@ -1,0 +1,8 @@
+[
+  {
+    "function": "cubictcp_acked",
+    "offset": "0x20a - 0x204",
+    "source_start": "net/ipv4/tcp_cubic.c:439",
+    "source_end": "net/ipv4/tcp_cubic.c:438"
+  }
+]
