@@ -9,6 +9,19 @@ apt_source_kernel() {
     local dest="$1"
     local kver="$(uname -r)"
 
+    # If running a custom (non -generic) kernel, fall back to the highest
+    # -generic kver installed under /boot, so `apt source` still resolves.
+    if [[ "$kver" != *-generic ]]; then
+        local fallback
+        fallback=$(ls /boot/vmlinuz-*-generic 2>/dev/null \
+            | sed 's|^/boot/vmlinuz-||' \
+            | sort -V | tail -1)
+        if [[ -n "$fallback" ]]; then
+            echo "apt_source_kernel: running $kver (non -generic); using $fallback for source lookup" >&2
+            kver="$fallback"
+        fi
+    fi
+
     local src_pkg=""
     local candidate info_line
     for candidate in "linux-image-unsigned-${kver}" "linux-image-${kver}"; do
