@@ -1,0 +1,5 @@
+SOURCE_FILE=net/ipv4/tcp_output.c
+FUNCTION_NAME=tcp_send_delayed_ack
+SOURCE_OP="getelementptr"
+CONSTANT_VALUE=77
+OCCURENCE=1
