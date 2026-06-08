@@ -24,6 +24,11 @@
 #
 # Stage 1 flags:
 #   --interproc, --no-upward-interproc, --indirect-call
+#
+# Pipeline tuning:
+#   --timeout SECONDS     wall-clock cap for stage 1 (taint pass);
+#                         on timeout, stage 1 exits non-zero and stage 2
+#                         is skipped for that input.
 
 set -e
 
@@ -50,6 +55,7 @@ while [[ $# -gt 0 ]]; do
         --dataset)             DATASET_DIR_ARG="$2"; shift 2 ;;
         --interproc|--no-upward-interproc|--indirect-call)
                                STAGE1_FLAGS+=("$1"); shift ;;
+        --timeout)             STAGE1_FLAGS+=(--timeout "$2"); shift 2 ;;
         --) shift; break ;;
         --*) echo "Unknown option: $1" >&2; exit 2 ;;
         *) break ;;
@@ -81,7 +87,17 @@ run_one() {
     fi
 
     echo "[ss-gen] (1/2) dataflow analysis: $input_abs -> $output"
-    bash "$SCRIPT_DIR/ss-analysis.sh" "${STAGE1_OPTS[@]}" "$input_abs" >"$output" 2>&1
+    local rc=0
+    bash "$SCRIPT_DIR/ss-analysis.sh" "${STAGE1_OPTS[@]}" "$input_abs" >"$output" 2>&1 || rc=$?
+    if [[ $rc -ne 0 ]]; then
+        if [[ $rc -eq 124 ]]; then
+            echo "[ss-gen] stage 1 timed out for $input_abs; skipping stage 2" >&2
+        else
+            echo "[ss-gen] stage 1 failed (exit $rc) for $input_abs; skipping stage 2" >&2
+        fi
+        rm -f "$output"
+        return "$rc"
+    fi
 
     echo "[ss-gen] (2/2) IR -> assembly mapping: $output -> $func_offset_json"
     python3 "$SCRIPT_DIR/ir_to_assembly.py" "${STAGE2_OPTS[@]}" "$output"

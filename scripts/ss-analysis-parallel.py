@@ -145,13 +145,26 @@ def process_input_file(args: Tuple[Path, int, int, str, dict]) -> Tuple[str, boo
         ]
 
         # Run the analysis
+        timeout_s = config.get('timeout')
         with open(output_file, 'w') as out_f:
-            result = subprocess.run(
-                opt_cmd,
-                stdout=out_f,
-                stderr=subprocess.STDOUT,
-                cwd=config['cwd']
-            )
+            try:
+                result = subprocess.run(
+                    opt_cmd,
+                    stdout=out_f,
+                    stderr=subprocess.STDOUT,
+                    cwd=config['cwd'],
+                    timeout=timeout_s,
+                )
+            except subprocess.TimeoutExpired:
+                out_f.flush()
+                # Drop partial output so the dir doesn't look "successful".
+                out_f.close()
+                try:
+                    os.remove(output_file)
+                except OSError:
+                    pass
+                return (str(input_file), False,
+                        f"opt timed out after {timeout_s}s")
 
             # Append additional info
             out_f.write(f"\n{kernel_dir / ll_file}\n")
@@ -221,6 +234,13 @@ def main():
         action='store_true',
         help='Disable indirect call analysis'
     )
+    parser.add_argument(
+        '--timeout',
+        type=int,
+        default=None,
+        help='Wall-clock cap (seconds) per opt invocation. On timeout, '
+             'the job is recorded as failed and its partial output.txt is removed.'
+    )
 
     args = parser.parse_args()
 
@@ -260,7 +280,8 @@ def main():
         'interproc': 'true' if not args.no_interproc else 'false',
         'upward_interproc': 'true' if not args.no_upward_interproc else 'false',
         'indirect_call': 'true' if not args.no_indirect_call else 'false',
-        'cwd': os.getcwd()
+        'cwd': os.getcwd(),
+        'timeout': args.timeout,
     }
 
     date_start = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

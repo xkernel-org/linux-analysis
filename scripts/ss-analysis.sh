@@ -34,6 +34,7 @@ PLUGIN_ARG=""
 INTERPROC=false
 UPWARD_INTERPROC=true
 INDIRECT_CALL=false
+TIMEOUT_ARG=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -43,6 +44,7 @@ while [[ $# -gt 0 ]]; do
         --interproc)           INTERPROC=true;       shift ;;
         --no-upward-interproc) UPWARD_INTERPROC=false; shift ;;
         --indirect-call)       INDIRECT_CALL=true;   shift ;;
+        --timeout)             TIMEOUT_ARG="$2";     shift 2 ;;
         --) shift; break ;;
         --*) echo "Unknown option: $1" >&2; exit 2 ;;
         *) break ;;
@@ -88,6 +90,12 @@ fi
 # shellcheck disable=SC1090
 source "$INPUT"
 
+TIMEOUT_CMD=()
+if [[ -n "$TIMEOUT_ARG" ]]; then
+    TIMEOUT_CMD=(timeout --kill-after=10 "$TIMEOUT_ARG")
+fi
+
+"${TIMEOUT_CMD[@]}" \
 opt -load-pass-plugin="$PLUGIN" \
     -passes="taint-tracker<$FUNCTION_NAME;$SOURCE_OP;$CONSTANT_VALUE;false;$INTERPROC;$INDIRECT_CALL;$UPWARD_INTERPROC;$OCCURENCE;true>" \
     -disable-output \
