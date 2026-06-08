@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/inode.c"
+definition_source_file = "fs/inode.c"
+sed_pattern = "s|#define LAST_INO_BATCH 1024|#define LAST_INO_BATCH 512|"

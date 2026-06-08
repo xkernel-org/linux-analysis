@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|p->node_stamp += 32 \\* diff|p\\-\\>node_stamp \\+\\= 64 \\* diff|"

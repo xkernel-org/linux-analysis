@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_input.c"
+definition_source_file = "include/linux/tcp.h"
+sed_pattern = "s|#define TCP_RACK_RECOVERY_THRESH 16|#define TCP_RACK_RECOVERY_THRESH 13|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_recovery.c"
+definition_source_file = "include/linux/tcp.h"
+sed_pattern = "s|#define TCP_RACK_RECOVERY_THRESH 16|#define TCP_RACK_RECOVERY_THRESH 13|"

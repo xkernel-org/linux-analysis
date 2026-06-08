@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "io_uring/napi.c"
+definition_source_file = "include/net/busy_poll.h"
+sed_pattern = "s|#define BUSY_POLL_BUDGET 8|#define BUSY_POLL_BUDGET 7|"
+
+[[mutation]]
+source_file = "fs/eventpoll.c"
+definition_source_file = "include/net/busy_poll.h"
+sed_pattern = "s|#define BUSY_POLL_BUDGET 8|#define BUSY_POLL_BUDGET 7|"

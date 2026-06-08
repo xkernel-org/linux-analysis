@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/workqueue.c"
+definition_source_file = "kernel/workqueue.c"
+sed_pattern = "s|#define BH_WORKER_JIFFIES\tmsecs_to_jiffies(2)|#define BH_WORKER_JIFFIES\tmsecs_to_jiffies(3)|"

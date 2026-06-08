@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/xfs/xfs_discard.c"
+definition_source_file = "fs/xfs/xfs_discard.c"
+sed_pattern = "s|#define XFS_DISCARD_MAX_EXAMINE\t(100)|#define XFS_DISCARD_MAX_EXAMINE\t(99)|"

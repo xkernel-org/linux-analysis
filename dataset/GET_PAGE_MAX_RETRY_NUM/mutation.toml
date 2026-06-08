@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/memory-failure.c"
+definition_source_file = "mm/memory-failure.c"
+sed_pattern = "s|#define GET_PAGE_MAX_RETRY_NUM 3|#define GET_PAGE_MAX_RETRY_NUM 7|"

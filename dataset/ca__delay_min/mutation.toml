@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_cubic.c"
+definition_source_file = "net/ipv4/tcp_cubic.c"
+sed_pattern = "s|ca->delay_min >> 3|ca->delay_min \\>\\> 1|"

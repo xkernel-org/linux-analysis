@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/compress.c"
+definition_source_file = "fs/f2fs/compress.c"
+sed_pattern = "s|#define MAX_VMAP_RETRIES\t3|#define MAX_VMAP_RETRIES\t5|"

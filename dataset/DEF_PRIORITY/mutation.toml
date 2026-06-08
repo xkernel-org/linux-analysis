@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "fs/xfs/xfs_icache.c"
+definition_source_file = "include/linux/mmzone.h"
+sed_pattern = "s|#define DEF_PRIORITY 12|#define DEF_PRIORITY 11|"
+
+[[mutation]]
+source_file = "mm/vmscan.c"
+definition_source_file = "include/linux/mmzone.h"
+sed_pattern = "s|#define DEF_PRIORITY 12|#define DEF_PRIORITY 11|"

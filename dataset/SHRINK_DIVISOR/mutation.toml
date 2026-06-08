@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/mbcache.c"
+definition_source_file = "fs/mbcache.c"
+sed_pattern = "s|#define SHRINK_DIVISOR 16|#define SHRINK_DIVISOR 8|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/pipe.c"
+definition_source_file = "fs/pipe.c"
+sed_pattern = "s|#define PIPE_MIN_DEF_BUFFERS 2|#define PIPE_MIN_DEF_BUFFERS 3|"

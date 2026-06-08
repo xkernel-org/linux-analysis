@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/core/gro.c"
+definition_source_file = "net/core/gro.c"
+sed_pattern = "s|#define MAX_GRO_SKBS 8|#define MAX_GRO_SKBS 7|"

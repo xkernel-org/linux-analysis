@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/btrfs/raid56.c"
+definition_source_file = "fs/btrfs/raid56.c"
+sed_pattern = "s|#define RBIO_CACHE_SIZE 1024|#define RBIO_CACHE_SIZE 512|"

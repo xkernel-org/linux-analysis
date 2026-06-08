@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/btrfs/delayed-inode.c"
+definition_source_file = "fs/btrfs/delayed-inode.c"
+sed_pattern = "s|#define BTRFS_DELAYED_BACKGROUND\t128|#define BTRFS_DELAYED_BACKGROUND\t64|"

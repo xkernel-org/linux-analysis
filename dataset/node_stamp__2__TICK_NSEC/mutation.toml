@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|p->node_stamp += 2 \\* TICK_NSEC|p->node_stamp \\+\\= 3 \\* TICK_NSEC|"

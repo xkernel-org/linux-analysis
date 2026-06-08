@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "block/bsg.c"
+definition_source_file = "include/linux/blkdev.h"
+sed_pattern = "s|#define BLK_MIN_SG_TIMEOUT\t(7 \\* HZ)|#define BLK_MIN_SG_TIMEOUT\t(5 \\* HZ)|"
+
+[[mutation]]
+source_file = "drivers/scsi/scsi_ioctl.c"
+definition_source_file = "include/linux/blkdev.h"
+sed_pattern = "s|#define BLK_MIN_SG_TIMEOUT\t(7 \\* HZ)|#define BLK_MIN_SG_TIMEOUT\t(5 \\* HZ)|"

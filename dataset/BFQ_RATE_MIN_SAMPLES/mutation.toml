@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bfq-iosched.c"
+definition_source_file = "block/bfq-iosched.c"
+sed_pattern = "s|#define BFQ_RATE_MIN_SAMPLES\t32|#define BFQ_RATE_MIN_SAMPLES\t16|"

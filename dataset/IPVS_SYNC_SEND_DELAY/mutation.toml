@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/netfilter/ipvs/ip_vs_sync.c"
+definition_source_file = "include/net/ip_vs.h"
+sed_pattern = "s|#define IPVS_SYNC_SEND_DELAY\t(HZ / 50)|#define IPVS_SYNC_SEND_DELAY\t10|"

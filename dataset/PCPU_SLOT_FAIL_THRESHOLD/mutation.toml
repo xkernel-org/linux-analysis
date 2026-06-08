@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/percpu.c"
+definition_source_file = "mm/percpu.c"
+sed_pattern = "s|#define PCPU_SLOT_FAIL_THRESHOLD\t3|#define PCPU_SLOT_FAIL_THRESHOLD\t11|"

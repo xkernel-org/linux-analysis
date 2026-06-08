@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bfq-iosched.c"
+definition_source_file = "block/bfq-iosched.c"
+sed_pattern = "s|#define BFQ_MIN_TT\t\t(2 \\* NSEC_PER_MSEC)|#define BFQ_MIN_TT\t\t(1 \\* NSEC_PER_MSEC)|"

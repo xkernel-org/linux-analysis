@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/ubifs/budget.c"
+definition_source_file = "fs/ubifs/budget.c"
+sed_pattern = "s|#define MAX_MKSPC_RETRIES 3|#define MAX_MKSPC_RETRIES 2|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/migrate.c"
+definition_source_file = "mm/migrate.c"
+sed_pattern = "s|#define NR_MAX_MIGRATE_PAGES_RETRY\t10|#define NR_MAX_MIGRATE_PAGES_RETRY\t11|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|#define VMA_PID_RESET_PERIOD (4 \\* sysctl_numa_balancing_scan_delay)|#define VMA_PID_RESET_PERIOD (2 \\* sysctl_numa_balancing_scan_delay)|"

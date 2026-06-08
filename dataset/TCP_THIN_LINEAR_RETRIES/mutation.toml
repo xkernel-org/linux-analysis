@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_timer.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_THIN_LINEAR_RETRIES 6|#define TCP_THIN_LINEAR_RETRIES 5|"

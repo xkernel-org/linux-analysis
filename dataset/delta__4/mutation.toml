@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/shrinker.c"
+definition_source_file = "mm/shrinker.c"
+sed_pattern = "s|delta \\*= 4|delta \\*\\= 2|"

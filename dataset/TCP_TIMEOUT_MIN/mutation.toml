@@ -1,0 +1,14 @@
+[[mutation]]
+source_file = "net/core/filter.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_TIMEOUT_MIN\t(2U)|#define TCP_TIMEOUT_MIN\t10|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_input.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_TIMEOUT_MIN\t(2U)|#define TCP_TIMEOUT_MIN\t10|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_timer.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_TIMEOUT_MIN\t(2U)|#define TCP_TIMEOUT_MIN\t10|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/migrate.c"
+definition_source_file = "mm/migrate.c"
+sed_pattern = "s|#define NR_MAX_BATCHED_MIGRATION\tHPAGE_PMD_NR|#define NR_MAX_BATCHED_MIGRATION\t256|"

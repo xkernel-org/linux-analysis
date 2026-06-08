@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/nfs/nfs4proc.c"
+definition_source_file = "fs/nfs/nfs4proc.c"
+sed_pattern = "s|#define NFS4_POLL_RETRY_MIN\t(HZ/10)|#define NFS4_POLL_RETRY_MIN\t(HZ/20)|"

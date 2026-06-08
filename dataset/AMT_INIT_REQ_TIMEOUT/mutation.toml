@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "drivers/net/amt.c"
+definition_source_file = "include/net/amt.h"
+sed_pattern = "s|#define AMT_INIT_REQ_TIMEOUT\t1|#define AMT_INIT_REQ_TIMEOUT\t10|"

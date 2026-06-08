@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bio.c"
+definition_source_file = "block/bio.c"
+sed_pattern = "s|#define ALLOC_CACHE_THRESHOLD\t16|#define ALLOC_CACHE_THRESHOLD\t8|"

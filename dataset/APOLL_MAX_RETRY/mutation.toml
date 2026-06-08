@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "io_uring/poll.c"
+definition_source_file = "io_uring/poll.c"
+sed_pattern = "s|#define APOLL_MAX_RETRY\t\t128|#define APOLL_MAX_RETRY\t\t64|"

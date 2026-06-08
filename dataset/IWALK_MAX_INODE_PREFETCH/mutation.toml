@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/xfs/xfs_iwalk.c"
+definition_source_file = "fs/xfs/xfs_iwalk.c"
+sed_pattern = "s|#define IWALK_MAX_INODE_PREFETCH\t(2048U)|#define IWALK_MAX_INODE_PREFETCH\t(1024U)|"

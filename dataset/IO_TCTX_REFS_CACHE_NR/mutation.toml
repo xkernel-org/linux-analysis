@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "io_uring/io_uring.c"
+definition_source_file = "io_uring/io_uring.c"
+sed_pattern = "s|#define IO_TCTX_REFS_CACHE_NR\t(1U << 10)|#define IO_TCTX_REFS_CACHE_NR\t(1U << 9)|"

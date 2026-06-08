@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bfq-iosched.c"
+definition_source_file = "block/bfq-iosched.c"
+sed_pattern = "s|static const unsigned long bfq_late_stable_merging = 600;|static const unsigned long bfq_late_stable_merging \\= 1200;|"

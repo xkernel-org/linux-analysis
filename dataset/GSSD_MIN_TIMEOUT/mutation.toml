@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/sunrpc/auth_gss/auth_gss.c"
+definition_source_file = "net/sunrpc/auth_gss/auth_gss.c"
+sed_pattern = "s|#define GSSD_MIN_TIMEOUT (60 \\* 60)|#define GSSD_MIN_TIMEOUT (60 \\* 30)|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "io_uring/net.c"
+definition_source_file = "io_uring/net.c"
+sed_pattern = "s|#define MULTISHOT_MAX_RETRY\t32|#define MULTISHOT_MAX_RETRY\t16|"

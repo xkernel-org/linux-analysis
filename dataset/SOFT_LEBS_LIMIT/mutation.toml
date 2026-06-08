@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/ubifs/gc.c"
+definition_source_file = "fs/ubifs/gc.c"
+sed_pattern = "s|#define SOFT_LEBS_LIMIT 4|#define SOFT_LEBS_LIMIT 2|"

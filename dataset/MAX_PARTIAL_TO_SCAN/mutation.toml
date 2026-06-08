@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/slub.c"
+definition_source_file = "mm/slub.c"
+sed_pattern = "s|#define MAX_PARTIAL_TO_SCAN 10000|#define MAX_PARTIAL_TO_SCAN 5000|"

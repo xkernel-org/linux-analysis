@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/select.c"
+definition_source_file = "fs/select.c"
+sed_pattern = "s|#define MAX_SLACK\t(100 \\* NSEC_PER_MSEC)|#define MAX_SLACK\t(50 \\* NSEC_PER_MSEC)|"

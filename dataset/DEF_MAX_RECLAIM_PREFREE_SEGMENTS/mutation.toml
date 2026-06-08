@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/segment.c"
+definition_source_file = "fs/f2fs/segment.h"
+sed_pattern = "s|#define DEF_MAX_RECLAIM_PREFREE_SEGMENTS\t4096|#define DEF_MAX_RECLAIM_PREFREE_SEGMENTS\t2048|"

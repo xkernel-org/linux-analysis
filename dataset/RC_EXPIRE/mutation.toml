@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/nfsd/nfscache.c"
+definition_source_file = "fs/nfsd/cache.h"
+sed_pattern = "s|#define RC_EXPIRE\t\t(120 \\* HZ)|#define RC_EXPIRE\t\t(60 \\* HZ)|"

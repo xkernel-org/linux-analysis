@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/rds/ib_recv.c"
+definition_source_file = "net/rds/ib.h"
+sed_pattern = "s|#define RDS_IB_RECYCLE_BATCH_COUNT\t32|#define RDS_IB_RECYCLE_BATCH_COUNT\t31|"

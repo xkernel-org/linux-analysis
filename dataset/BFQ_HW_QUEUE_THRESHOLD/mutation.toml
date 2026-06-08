@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bfq-iosched.c"
+definition_source_file = "block/bfq-iosched.c"
+sed_pattern = "s|#define BFQ_HW_QUEUE_THRESHOLD\t3|#define BFQ_HW_QUEUE_THRESHOLD\t2|"

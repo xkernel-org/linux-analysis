@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/ubifs/budget.c"
+definition_source_file = "fs/ubifs/budget.c"
+sed_pattern = "s|#define NR_TO_WRITE 16|#define NR_TO_WRITE 8|"

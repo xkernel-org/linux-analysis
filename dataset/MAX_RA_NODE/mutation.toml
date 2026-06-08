@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/node.c"
+definition_source_file = "fs/f2fs/node.h"
+sed_pattern = "s|#define MAX_RA_NODE\t\t128|#define MAX_RA_NODE\t\t64|"

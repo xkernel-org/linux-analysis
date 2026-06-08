@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/xfs/xfs_trans.c"
+definition_source_file = "fs/xfs/xfs_trans.c"
+sed_pattern = "s|#define XFS_ICOUNT_BATCH\t128|#define XFS_ICOUNT_BATCH\t64|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|#define MAX_PINNED_INTERVAL\t512|#define MAX_PINNED_INTERVAL\t256|"

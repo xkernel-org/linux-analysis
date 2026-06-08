@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "net/dccp/timer.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_DELACK_MIN\t((unsigned)(HZ/25))|#define TCP_DELACK_MIN\t10|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_output.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_DELACK_MIN\t((unsigned)(HZ/25))|#define TCP_DELACK_MIN\t10|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "lib/sbitmap.c"
+definition_source_file = "include/linux/sbitmap.h"
+sed_pattern = "s|#define SBQ_WAKE_BATCH 8|#define SBQ_WAKE_BATCH 7|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/segment.c"
+definition_source_file = "fs/f2fs/f2fs.h"
+sed_pattern = "s|#define DEF_DISCARD_URGENT_UTIL\t\t80|#define DEF_DISCARD_URGENT_UTIL\t\t40|"

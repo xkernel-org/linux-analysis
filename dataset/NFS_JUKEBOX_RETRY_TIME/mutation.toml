@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "fs/nfs/flexfilelayout/flexfilelayout.c"
+definition_source_file = "include/linux/nfs_fs.h"
+sed_pattern = "s|#define NFS_JUKEBOX_RETRY_TIME (5 \\* HZ)|#define NFS_JUKEBOX_RETRY_TIME (7 \\* HZ)|"
+
+[[mutation]]
+source_file = "fs/nfs/nfs3proc.c"
+definition_source_file = "include/linux/nfs_fs.h"
+sed_pattern = "s|#define NFS_JUKEBOX_RETRY_TIME (5 \\* HZ)|#define NFS_JUKEBOX_RETRY_TIME (7 \\* HZ)|"

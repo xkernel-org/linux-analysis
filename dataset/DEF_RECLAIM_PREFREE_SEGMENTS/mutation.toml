@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/segment.c"
+definition_source_file = "fs/f2fs/segment.h"
+sed_pattern = "s|#define DEF_RECLAIM_PREFREE_SEGMENTS\t5|#define DEF_RECLAIM_PREFREE_SEGMENTS\t4|"

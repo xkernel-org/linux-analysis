@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "net/ipv4/tcp_dctcp.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_PLB_SCALE 8|#define TCP_PLB_SCALE 7|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_ipv4.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_PLB_SCALE 8|#define TCP_PLB_SCALE 7|"

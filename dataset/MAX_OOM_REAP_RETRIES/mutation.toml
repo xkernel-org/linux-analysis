@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "mm/oom_kill.c"
+definition_source_file = "mm/oom_kill.c"
+sed_pattern = "s|#define MAX_OOM_REAP_RETRIES 10|#define MAX_OOM_REAP_RETRIES 11|"

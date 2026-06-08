@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/xfs/xfs_iwalk.c"
+definition_source_file = "fs/xfs/xfs_iwalk.c"
+sed_pattern = "s|\t(PAGE_SIZE / sizeof(struct xfs_inobt_rec_incore))|\t(PAGE_SIZE / 2 / sizeof(struct xfs_inobt_rec_incore))|"

@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/eventpoll.c"
+definition_source_file = "fs/eventpoll.c"
+sed_pattern = "s|#define EP_MAX_NESTS 4|#define EP_MAX_NESTS 3|"

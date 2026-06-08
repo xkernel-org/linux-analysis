@@ -1,0 +1,19 @@
+[[mutation]]
+source_file = "net/ipv4/tcp.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_INIT_CWND\t\t10|#define TCP_INIT_CWND\t\t9|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_bbr.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_INIT_CWND\t\t10|#define TCP_INIT_CWND\t\t9|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_input.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_INIT_CWND\t\t10|#define TCP_INIT_CWND\t\t9|"
+
+[[mutation]]
+source_file = "net/mptcp/protocol.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_INIT_CWND\t\t10|#define TCP_INIT_CWND\t\t9|"

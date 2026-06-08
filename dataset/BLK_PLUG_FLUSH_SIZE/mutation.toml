@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/blk-mq.c"
+definition_source_file = "block/blk.h"
+sed_pattern = "s|#define BLK_PLUG_FLUSH_SIZE\t(128 \\* 1024)|#define BLK_PLUG_FLUSH_SIZE\t(64 \\* 1024)|"

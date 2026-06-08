@@ -1,0 +1,9 @@
+[[mutation]]
+source_file = "block/blk-core.c"
+definition_source_file = "include/linux/blk-mq.h"
+sed_pattern = "s|#define BLKDEV_DEFAULT_RQ\t128|#define BLKDEV_DEFAULT_RQ\t64|"
+
+[[mutation]]
+source_file = "block/blk-mq-sched.c"
+definition_source_file = "include/linux/blk-mq.h"
+sed_pattern = "s|#define BLKDEV_DEFAULT_RQ\t128|#define BLKDEV_DEFAULT_RQ\t64|"

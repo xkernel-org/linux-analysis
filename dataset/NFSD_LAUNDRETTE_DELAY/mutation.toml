@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/nfsd/filecache.c"
+definition_source_file = "fs/nfsd/filecache.c"
+sed_pattern = "s|#define NFSD_LAUNDRETTE_DELAY\t\t     (2 \\* HZ)|#define NFSD_LAUNDRETTE_DELAY\t\t     (1 \\* HZ)|"

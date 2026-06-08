@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/gc.c"
+definition_source_file = "fs/f2fs/gc.h"
+sed_pattern = "s|#define DEF_GC_THREAD_URGENT_SLEEP_TIME\t500|#define DEF_GC_THREAD_URGENT_SLEEP_TIME\t499|"

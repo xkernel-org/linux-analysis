@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "block/bfq-iosched.c"
+definition_source_file = "block/bfq-iosched.c"
+sed_pattern = "s|static const unsigned long max_service_from_wr = 120000;|static const unsigned long max_service_from_wr \\= 240000;|"

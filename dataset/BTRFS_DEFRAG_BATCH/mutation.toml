@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/btrfs/defrag.c"
+definition_source_file = "fs/btrfs/defrag.c"
+sed_pattern = "s|#define BTRFS_DEFRAG_BATCH\t1024|#define BTRFS_DEFRAG_BATCH\t512|"

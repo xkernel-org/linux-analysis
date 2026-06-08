@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|#define NUMA_PERIOD_THRESHOLD 7|#define NUMA_PERIOD_THRESHOLD 6|"

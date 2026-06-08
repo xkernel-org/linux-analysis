@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|#define MAX_SCAN_WINDOW 2560|#define MAX_SCAN_WINDOW 1280|"

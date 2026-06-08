@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/f2fs/gc.c"
+definition_source_file = "fs/f2fs/segment.h"
+sed_pattern = "s|#define MAX_SKIP_GC_COUNT\t\t\t16|#define MAX_SKIP_GC_COUNT\t\t\t8|"

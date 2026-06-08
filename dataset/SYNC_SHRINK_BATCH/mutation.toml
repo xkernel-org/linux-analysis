@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/mbcache.c"
+definition_source_file = "fs/mbcache.c"
+sed_pattern = "s|#define SYNC_SHRINK_BATCH 64|#define SYNC_SHRINK_BATCH 32|"

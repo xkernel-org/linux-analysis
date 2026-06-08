@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "net/smc/smc_tx.c"
+definition_source_file = "net/smc/smc_tx.c"
+sed_pattern = "s|#define SMC_TX_WORK_DELAY\t0|#define SMC_TX_WORK_DELAY\t7|"

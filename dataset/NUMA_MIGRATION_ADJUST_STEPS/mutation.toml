@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/sched/fair.c"
+definition_source_file = "kernel/sched/fair.c"
+sed_pattern = "s|#define NUMA_MIGRATION_ADJUST_STEPS\t16|#define NUMA_MIGRATION_ADJUST_STEPS\t8|"

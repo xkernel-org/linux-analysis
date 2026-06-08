@@ -1,0 +1,29 @@
+[[mutation]]
+source_file = "net/core/filter.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_input.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"
+
+[[mutation]]
+source_file = "net/ipv4/tcp_output.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"
+
+[[mutation]]
+source_file = "net/netfilter/nf_conntrack_proto_tcp.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"
+
+[[mutation]]
+source_file = "net/netfilter/nf_synproxy_core.c"
+definition_source_file = "include/net/tcp.h"
+sed_pattern = "s|#define TCP_MAX_WSCALE\t\t14U|#define TCP_MAX_WSCALE\t\t13U|"

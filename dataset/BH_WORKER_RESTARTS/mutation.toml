@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "kernel/workqueue.c"
+definition_source_file = "kernel/workqueue.c"
+sed_pattern = "s|#define BH_WORKER_RESTARTS\t10|#define BH_WORKER_RESTARTS\t9|"

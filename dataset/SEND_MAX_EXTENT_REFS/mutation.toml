@@ -1,0 +1,4 @@
+[[mutation]]
+source_file = "fs/btrfs/send.c"
+definition_source_file = "fs/btrfs/send.c"
+sed_pattern = "s|#define SEND_MAX_EXTENT_REFS\t1024|#define SEND_MAX_EXTENT_REFS\t512|"
