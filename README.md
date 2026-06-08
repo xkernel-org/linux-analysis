@@ -91,11 +91,10 @@ For each `dataset/<NAME>/<N>.input.txt`, `ss-gen.sh` writes:
 ## Integration with Xkernel
 
 Xkernel discovers this checkout via the sibling-of-Xkernel convention
-(`<xkernel_parent>/linux-analysis`), with an in-tree fallback for
-development layouts. When invoked with `--run-analysis`,
+(`<xkernel_parent>/linux-analysis`). When invoked with `--run-analysis`,
 `xkernel-tool build` shells out to `scripts/ss-gen.sh --tunable <NAME>`
 and parses the resulting JSON directly. See
-[Xkernel's `docs/ss-analysis.md`](../docs/ss-analysis.md) for the full
+[Xkernel's `docs/ss-analysis.md`](../Xkernel/docs/ss-analysis.md) for the full
 flow.
 
 ## Stragglers
