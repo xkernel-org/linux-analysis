@@ -27,7 +27,7 @@ There are two ways to set up the analysis tree:
 
 As prompted, log out of the current shell and log back in again.
 
-Both modes stage `$LINUX_WLLVM = ~/linux-analysis-workdir/linux-6.8.0-wllvm`
+Both modes stage `$LINUX_WLLVM = ~/linux-6.8.0-wllvm`
 as a copy of `$LINUX_GCC = ~/linux-6.8.0`. Build the wllvm bitcode for
 analysis:
 

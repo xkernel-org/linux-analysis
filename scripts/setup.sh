@@ -65,7 +65,7 @@ fi
 #
 
 LINUX_GCC=$HOME/linux-6.8.0
-LINUX_WLLVM=$HOME/linux-analysis-workdir/linux-6.8.0-wllvm
+LINUX_WLLVM=$HOME/linux-6.8.0-wllvm
 export LINUX_GCC LINUX_WLLVM
 
 export LLVM_COMPILER=clang
@@ -77,14 +77,13 @@ if ! grep -q "### Xkernel Linux analysis" $HOME/.bashrc >/dev/null 2>&1; then
 ### Xkernel Linux analysis
 
 export LINUX_GCC=$HOME/linux-6.8.0
-export LINUX_WLLVM=$HOME/linux-analysis-workdir/linux-6.8.0-wllvm
+export LINUX_WLLVM=$HOME/linux-6.8.0-wllvm
 
 export LLVM_COMPILER=clang
 export PATH=/lib/llvm-20/bin:$PATH
 EOF
 fi
 
-mkdir -p "$(dirname "$LINUX_WLLVM")"
 
 source "$(dirname "${BASH_SOURCE[0]}")/_lib.sh"
 
