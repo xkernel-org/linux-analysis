@@ -1,0 +1,8 @@
+[
+  {
+    "function": "tcp_identify_packet_loss",
+    "offset": "0x50 - 0x50",
+    "source_start": "net/ipv4/tcp_input.c:3060",
+    "source_end": "net/ipv4/tcp_input.c:3060"
+  }
+]

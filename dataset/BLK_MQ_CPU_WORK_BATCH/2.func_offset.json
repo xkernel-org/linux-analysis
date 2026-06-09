@@ -1,0 +1,68 @@
+[
+  {
+    "function": "hmb_store",
+    "offset": "0xc5 - 0xcd",
+    "source_start": "drivers/nvme/host/pci.c:2202",
+    "source_end": "drivers/nvme/host/pci.c:2202"
+  },
+  {
+    "function": "nvme_pr_read_keys",
+    "offset": "0x51 - 0xe8",
+    "source_start": "drivers/nvme/host/pr.c:218",
+    "source_end": "drivers/nvme/host/pr.c:241"
+  },
+  {
+    "function": "nvme_pr_read_reservation",
+    "offset": "0x96 - 0xaf",
+    "source_start": "drivers/nvme/host/pr.c:256",
+    "source_end": "drivers/nvme/host/pr.c:303"
+  },
+  {
+    "function": "nvme_probe",
+    "offset": "0x7f4 - 0x812",
+    "source_start": "drivers/nvme/host/pci.c:3176",
+    "source_end": "drivers/nvme/host/pci.c:3181"
+  },
+  {
+    "function": "nvme_report_zones",
+    "offset": "0x6 - 0xd",
+    "source_start": "drivers/nvme/host/core.c:2242",
+    "source_end": "drivers/nvme/host/core.c:2242"
+  },
+  {
+    "function": "nvme_reset_work",
+    "offset": "0xbd - 0xd9",
+    "source_start": "drivers/nvme/host/pci.c:2842",
+    "source_end": "drivers/nvme/host/pci.c:2847"
+  },
+  {
+    "function": "nvme_resume",
+    "offset": "0x42 - 0x58",
+    "source_start": "drivers/nvme/host/pci.c:3304",
+    "source_end": "drivers/nvme/host/pci.c:3304"
+  },
+  {
+    "function": "nvme_scan_ns",
+    "offset": "0x1ef - 0x5c6",
+    "source_start": "drivers/nvme/host/core.c:3880",
+    "source_end": "drivers/nvme/host/core.c:3760"
+  },
+  {
+    "function": "nvme_suspend",
+    "offset": "0xd9 - 0xe3",
+    "source_start": "drivers/nvme/host/pci.c:3352",
+    "source_end": "drivers/nvme/host/pci.c:3353"
+  },
+  {
+    "function": "nvme_update_ns_info_block",
+    "offset": "0x6af - 0x6ba",
+    "source_start": "drivers/nvme/host/core.c:2127",
+    "source_end": "drivers/nvme/host/core.c:2128"
+  },
+  {
+    "function": "virtblk_poll",
+    "offset": "0x7d - 0x116",
+    "source_start": "drivers/block/virtio_blk.c:332",
+    "source_end": "drivers/block/virtio_blk.c:348"
+  }
+]
