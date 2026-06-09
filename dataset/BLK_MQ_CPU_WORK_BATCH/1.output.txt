@@ -5,7 +5,7 @@ Constant: 8
 Verbose: OFF
 Interproc (downward): OFF
 Interproc (upward): ON
-IndirectCall: ON
+IndirectCall: OFF
 ApproxDebugInfo: ON
 Occurrence: 1 (of constant 8)
 
@@ -48,6 +48,3 @@ Number of other visited functions: 0
 blk_mq_map_swqueue, 47, 4, 47, 4
 
 === Taint Analysis Complete ===
-
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq.ll
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq.c

@@ -1411,6 +1411,14 @@ Occurrence: 1 (of constant 8)
   [USE] Taint flows to:   %274 = icmp eq i32 %273, 0 <drivers/nvme/host/core.c:3888:14> (approx) FUNC=nvme_scan_ns L=7
   [USE] Taint flows to:   %275 = or i1 %272, %274, <drivers/nvme/host/core.c:3888:14> FUNC=nvme_scan_ns L=7
   [USE] Taint flows to:   br i1 %275, label %277, label %276, <drivers/nvme/host/core.c:3888:14> FUNC=nvme_scan_ns L=7
+[SKIP] Load before taint origin, not tainting:   %262 = load ptr, ptr %2, align 8, <./include/linux/list.h:169:30> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer (struct field):   %118 = load ptr, ptr %54, align 8, (base:   %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:183:24> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer:   %145 = load ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <block/blk-mq-sched.c:59:3> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer:   %171 = load volatile ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer (struct field):   %174 = load ptr, ptr %54, align 8, (base:   %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:528:33> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer:   %180 = load volatile ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer:   %21 = load ptr, ptr %5, align 8, (  %5 = alloca %struct.list_head, align 8, !DIAssignID !16757166)  <./include/linux/list.h:572:35> FUNC=__blk_mq_sched_dispatch_requests L=1
+[LOAD] Tainted load from tracked pointer:   %28 = load volatile ptr, ptr %5, align 8, (  %5 = alloca %struct.list_head, align 8, !DIAssignID !16757166)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
 [LOAD] Tainted load from tracked pointer (struct field):   %28 = load i64, ptr %27, align 8, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <drivers/block/virtio_blk.c:332:37> FUNC=virtblk_poll L=7
 [LOAD] Tainted load from tracked pointer (struct field):   %38 = load i32, ptr %37, align 4, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <./include/linux/blk-mq.h:852:11> FUNC=virtblk_poll L=7
 [LOAD] Tainted load from tracked pointer (struct field):   %43 = load i32, ptr %42, align 8, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <./include/linux/blk-mq.h:198:35> FUNC=virtblk_poll L=7
@@ -1425,14 +1433,76 @@ Occurrence: 1 (of constant 8)
 [LOAD] Tainted load from tracked pointer (struct field):   %108 = load i32, ptr %107, align 4, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <./include/linux/bvec.h:283:45> FUNC=virtblk_poll L=7
 [LOAD] Tainted load from tracked pointer (struct field):   %113 = load i32, ptr %112, align 8, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <./include/linux/blk-mq.h:193:14> FUNC=virtblk_poll L=7
 [LOAD] Tainted load from tracked pointer (struct field):   %117 = load i64, ptr %26, align 8, (base:   %23 = phi ptr [ %16, %18 ], [ %122, %120 ])  <drivers/block/virtio_blk.c:346:31> FUNC=virtblk_poll L=7
-[SKIP] Load before taint origin, not tainting:   %262 = load ptr, ptr %2, align 8, <./include/linux/list.h:169:30> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer (struct field):   %118 = load ptr, ptr %54, align 8, (base:   %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:183:24> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer:   %145 = load ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <block/blk-mq-sched.c:59:3> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer:   %171 = load volatile ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer (struct field):   %174 = load ptr, ptr %54, align 8, (base:   %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:528:33> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer:   %180 = load volatile ptr, ptr %4, align 8, (  %4 = alloca %struct.list_head, align 8, !DIAssignID !16757165)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer:   %21 = load ptr, ptr %5, align 8, (  %5 = alloca %struct.list_head, align 8, !DIAssignID !16757166)  <./include/linux/list.h:572:35> FUNC=__blk_mq_sched_dispatch_requests L=1
-[LOAD] Tainted load from tracked pointer:   %28 = load volatile ptr, ptr %5, align 8, (  %5 = alloca %struct.list_head, align 8, !DIAssignID !16757166)  <./include/linux/list.h:373:9> FUNC=__blk_mq_sched_dispatch_requests L=1
+  [USE] Taint flows to:   store i64 %117, ptr %118, align 8, <drivers/block/virtio_blk.c:345:17> FUNC=virtblk_poll L=7
+  [STORE DESTINATION] Marking pointer as tainted:   %118 = getelementptr i8, ptr %23, i64 -200, <drivers/block/virtio_blk.c:345:17> FUNC=virtblk_poll L=7
+  %118 = getelementptr i8, ptr %23, i64 -200,
+  → base pointer:
+          %23 = phi ptr [ %16, %18 ], [ %122, %120 ]
+      PHI with 2 paths:
+      Path 0 (from %):
+                  %16 = call ptr @virtqueue_get_buf(ptr noundef %15, ptr noundef nonnull %3) #269,
+          → call to virtqueue_get_buf (no parameter)
+        → no parameter connection
+      Path 1 (from %):
+                  %122 = call ptr @virtqueue_get_buf(ptr noundef %121, ptr noundef nonnull %3) #269,
+          → call to virtqueue_get_buf (no parameter)
+        → no parameter connection
+  → Result: No parameter connection found
+  [USE] Taint flows to:   %114 = and i32 %113, 255, <./include/linux/blk-mq.h:193:24> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %115 = icmp eq i32 %114, 7, <drivers/block/virtio_blk.c:344:18> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %115, label %116, label %119, <drivers/block/virtio_blk.c:344:18> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %109 = zext i32 %108 to i64, <./include/linux/bvec.h:283:37> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %110 = getelementptr i8, ptr %106, i64 %109, <./include/linux/bvec.h:283:37> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   call void @kfree(ptr noundef %110) #269, <drivers/block/virtio_blk.c:236:3> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %101 = ptrtoint ptr %99 to i64, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %102 = sub i64 %101, %100, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %103 = shl i64 %102, 6, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %105 = add i64 %103, %104, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %106 = inttoptr i64 %105 to ptr, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %95 = and i32 %94, 262144, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %96 = icmp eq i32 %95, 0, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %96, label %111, label %97, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %91 = icmp eq i16 %90, 0, <drivers/block/virtio_blk.c:209:6> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %91, label %111, label %92, <drivers/block/virtio_blk.c:209:6> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %86 = and i32 %85, 262144, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %87 = icmp eq i32 %86, 0, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %87, label %88, label %92, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %75 = getelementptr i8, ptr %26, i64 %74, <drivers/block/virtio_blk.c:332:30> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %76 = getelementptr i8, ptr %75, i64 -1, <drivers/block/virtio_blk.c:332:48> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %77 = load i8, ptr %76, align 1, <drivers/block/virtio_blk.c:332:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   switch i8 %77, label %81 [
+    i8 0, label %82
+    i8 2, label %78
+    i8 5, label %79
+    i8 6, label %80
+  ], <drivers/block/virtio_blk.c:116:2> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %83 = phi i8 [ 10, %81 ], [ 16, %80 ], [ 15, %79 ], [ 1, %78 ], [ %77, %73 ], <./include/linux/blk-mq.h:1127:10> (approx) FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   call void @blk_mq_end_request(ptr noundef %25, i8 noundef zeroext %83) #269, <drivers/block/virtio_blk.c:348:2> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %64 = and i32 %63, 139776, <./include/linux/blk-mq.h:819:23> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %65 = icmp ne i32 %64, 0, <./include/linux/blk-mq.h:819:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %66 = zext i1 %65 to i8, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %68 = phi i8 [ %66, %62 ], [ 0, %59 ], <./include/linux/blk-mq.h:865:15> (approx) FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %70 = or i8 %69, %68, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   store i8 %70, ptr %21, align 8, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
+  [STORE DESTINATION] Marking pointer as tainted:   %21 = getelementptr inbounds nuw i8, ptr %1, i64 8 <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
+  [POINTER PARAMETER] Tainted value stored through pointer parameter #1 (ptr %1) <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %56 = and i32 %55, 254, <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %60 = phi i32 [ %44, %57 ], [ %56, %54 ], <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %61 = icmp eq i32 %60, 34, <./include/linux/blkdev.h:281:29> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %61, label %67, label %62, <./include/linux/blk-mq.h:817:6> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %49 = icmp ne ptr %48, null, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %50 = or i1 %35, %49, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %50, label %73, label %51, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %44 = and i32 %43, 254, <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %45 = icmp eq i32 %44, 34, <./include/linux/blkdev.h:281:29> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %45, label %51, label %46, <./include/linux/blk-mq.h:854:6> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %39 = and i32 %38, 256, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %40 = icmp eq i32 %39, 0, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   br i1 %40, label %41, label %73, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %29 = getelementptr i8, ptr %26, i64 %28, <drivers/block/virtio_blk.c:332:30> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %30 = getelementptr i8, ptr %29, i64 -1, <drivers/block/virtio_blk.c:332:48> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %31 = load i8, ptr %30, align 1, <drivers/block/virtio_blk.c:332:9> FUNC=virtblk_poll L=7
+  [USE] Taint flows to:   %35 = icmp ne i8 %31, 0, <drivers/block/virtio_blk.c:1223:45> FUNC=virtblk_poll L=7
   [USE] Taint flows to:   %29 = icmp eq ptr %28, %5, <./include/linux/list.h:373:31> FUNC=__blk_mq_sched_dispatch_requests L=1
   [USE] Taint flows to:   br i1 %29, label %38, label %30, <block/blk-mq-sched.c:299:6> FUNC=__blk_mq_sched_dispatch_requests L=1
   [USE] Taint flows to:   store ptr %21, ptr %23, align 8, <./include/linux/list.h:533:13> FUNC=__blk_mq_sched_dispatch_requests L=1
@@ -1504,76 +1574,6 @@ Occurrence: 1 (of constant 8)
       → indirect call (no parameter)
   → Result: No parameter connection found
   [USE] Taint flows to:   store volatile ptr %117, ptr %118, align 8, <./include/linux/list.h:156:2> FUNC=__blk_mq_sched_dispatch_requests L=1
-  [USE] Taint flows to:   store i64 %117, ptr %118, align 8, <drivers/block/virtio_blk.c:345:17> FUNC=virtblk_poll L=7
-  [STORE DESTINATION] Marking pointer as tainted:   %118 = getelementptr i8, ptr %23, i64 -200, <drivers/block/virtio_blk.c:345:17> FUNC=virtblk_poll L=7
-  %118 = getelementptr i8, ptr %23, i64 -200,
-  → base pointer:
-          %23 = phi ptr [ %16, %18 ], [ %122, %120 ]
-      PHI with 2 paths:
-      Path 0 (from %):
-                  %16 = call ptr @virtqueue_get_buf(ptr noundef %15, ptr noundef nonnull %3) #269,
-          → call to virtqueue_get_buf (no parameter)
-        → no parameter connection
-      Path 1 (from %):
-                  %122 = call ptr @virtqueue_get_buf(ptr noundef %121, ptr noundef nonnull %3) #269,
-          → call to virtqueue_get_buf (no parameter)
-        → no parameter connection
-  → Result: No parameter connection found
-  [USE] Taint flows to:   %114 = and i32 %113, 255, <./include/linux/blk-mq.h:193:24> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %115 = icmp eq i32 %114, 7, <drivers/block/virtio_blk.c:344:18> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %115, label %116, label %119, <drivers/block/virtio_blk.c:344:18> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %109 = zext i32 %108 to i64, <./include/linux/bvec.h:283:37> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %110 = getelementptr i8, ptr %106, i64 %109, <./include/linux/bvec.h:283:37> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   call void @kfree(ptr noundef %110) #269, <drivers/block/virtio_blk.c:236:3> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %101 = ptrtoint ptr %99 to i64, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %102 = sub i64 %101, %100, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %103 = shl i64 %102, 6, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %105 = add i64 %103, %104, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %106 = inttoptr i64 %105 to ptr, <./include/linux/mm.h:2281:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %95 = and i32 %94, 262144, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %96 = icmp eq i32 %95, 0, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %96, label %111, label %97, <drivers/block/virtio_blk.c:235:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %91 = icmp eq i16 %90, 0, <drivers/block/virtio_blk.c:209:6> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %91, label %111, label %92, <drivers/block/virtio_blk.c:209:6> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %86 = and i32 %85, 262144, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %87 = icmp eq i32 %86, 0, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %87, label %88, label %92, <./include/linux/blk-mq.h:1127:19> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %75 = getelementptr i8, ptr %26, i64 %74, <drivers/block/virtio_blk.c:332:30> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %76 = getelementptr i8, ptr %75, i64 -1, <drivers/block/virtio_blk.c:332:48> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %77 = load i8, ptr %76, align 1, <drivers/block/virtio_blk.c:332:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   switch i8 %77, label %81 [
-    i8 0, label %82
-    i8 2, label %78
-    i8 5, label %79
-    i8 6, label %80
-  ], <drivers/block/virtio_blk.c:116:2> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %83 = phi i8 [ 10, %81 ], [ 16, %80 ], [ 15, %79 ], [ 1, %78 ], [ %77, %73 ], <./include/linux/blk-mq.h:1127:10> (approx) FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   call void @blk_mq_end_request(ptr noundef %25, i8 noundef zeroext %83) #269, <drivers/block/virtio_blk.c:348:2> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %64 = and i32 %63, 139776, <./include/linux/blk-mq.h:819:23> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %65 = icmp ne i32 %64, 0, <./include/linux/blk-mq.h:819:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %66 = zext i1 %65 to i8, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %68 = phi i8 [ %66, %62 ], [ 0, %59 ], <./include/linux/blk-mq.h:865:15> (approx) FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %70 = or i8 %69, %68, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   store i8 %70, ptr %21, align 8, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
-  [STORE DESTINATION] Marking pointer as tainted:   %21 = getelementptr inbounds nuw i8, ptr %1, i64 8 <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
-  [POINTER PARAMETER] Tainted value stored through pointer parameter #1 (ptr %1) <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %56 = and i32 %55, 254, <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %60 = phi i32 [ %44, %57 ], [ %56, %54 ], <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %61 = icmp eq i32 %60, 34, <./include/linux/blkdev.h:281:29> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %61, label %67, label %62, <./include/linux/blk-mq.h:817:6> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %49 = icmp ne ptr %48, null, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %50 = or i1 %35, %49, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %50, label %73, label %51, <./include/linux/blk-mq.h:855:7> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %44 = and i32 %43, 254, <./include/linux/blkdev.h:280:5> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %45 = icmp eq i32 %44, 34, <./include/linux/blkdev.h:281:29> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %45, label %51, label %46, <./include/linux/blk-mq.h:854:6> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %39 = and i32 %38, 256, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %40 = icmp eq i32 %39, 0, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   br i1 %40, label %41, label %73, <./include/linux/blk-mq.h:852:20> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %29 = getelementptr i8, ptr %26, i64 %28, <drivers/block/virtio_blk.c:332:30> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %30 = getelementptr i8, ptr %29, i64 -1, <drivers/block/virtio_blk.c:332:48> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %31 = load i8, ptr %30, align 1, <drivers/block/virtio_blk.c:332:9> FUNC=virtblk_poll L=7
-  [USE] Taint flows to:   %35 = icmp ne i8 %31, 0, <drivers/block/virtio_blk.c:1223:45> FUNC=virtblk_poll L=7
 [SKIP] Load before taint origin, not tainting:   %69 = load i8, ptr %21, align 8, <./include/linux/blk-mq.h:865:15> FUNC=virtblk_poll L=7
 [UPWARD-INTERPROC] Call to __blk_mq_sched_dispatch_requests returns tainted value <block/blk-mq-sched.c:331:6> FUNC=blk_mq_sched_dispatch_requests L=2
 [UPWARD-INTERPROC] Call to __blk_mq_sched_dispatch_requests returns tainted value <block/blk-mq-sched.c:332:7> FUNC=blk_mq_sched_dispatch_requests L=2

@@ -5,7 +5,7 @@ Constant: 10
 Verbose: OFF
 Interproc (downward): OFF
 Interproc (upward): ON
-IndirectCall: ON
+IndirectCall: OFF
 ApproxDebugInfo: ON
 Occurrence: 1 (of constant 10)
 
@@ -42,6 +42,3 @@ Number of other visited functions: 0
 handle_softirqs, 1, 1, 23, 6
 
 === Taint Analysis Complete ===
-
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/kernel/softirq.ll
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/kernel/softirq.c

@@ -5,7 +5,7 @@ Constant: 32
 Verbose: OFF
 Interproc (downward): OFF
 Interproc (upward): ON
-IndirectCall: ON
+IndirectCall: OFF
 ApproxDebugInfo: ON
 Occurrence: 1 (of constant 32)
 
@@ -39,6 +39,3 @@ Number of other visited functions: 0
 blk_start_plug_nr_ios, 1, 0, 1, 0
 
 === Taint Analysis Complete ===
-
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-core.ll
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-core.c

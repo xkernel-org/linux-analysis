@@ -5,7 +5,7 @@ Constant: 3
 Verbose: OFF
 Interproc (downward): OFF
 Interproc (upward): ON
-IndirectCall: ON
+IndirectCall: OFF
 ApproxDebugInfo: ON
 Occurrence: 2 (of constant 3)
 
@@ -35,6 +35,3 @@ Number of other visited functions: 0
 __blk_mq_sched_dispatch_requests, 63, 0, 63, 0
 
 === Taint Analysis Complete ===
-
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq-sched.ll
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/block/blk-mq-sched.c

@@ -5,7 +5,7 @@ Constant: 3
 Verbose: OFF
 Interproc (downward): OFF
 Interproc (upward): ON
-IndirectCall: ON
+IndirectCall: OFF
 ApproxDebugInfo: ON
 Occurrence: 1 (of constant 3)
 
@@ -42,6 +42,3 @@ Number of other visited functions: 0
 cubictcp_acked, 21, 3, 21, 7
 
 === Taint Analysis Complete ===
-
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/net/ipv4/tcp_cubic.ll
-/users/wtj/linux-analysis-workdir/linux-6.8.0-wllvm/net/ipv4/tcp_cubic.c
