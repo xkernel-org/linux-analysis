@@ -7,6 +7,7 @@ Run the analysis for all <input-dir>/*/*.input.txt files in parallel
 import os
 import sys
 import glob
+import signal
 import subprocess
 import argparse
 from pathlib import Path
@@ -147,17 +148,29 @@ def process_input_file(args: Tuple[Path, int, int, str, dict]) -> Tuple[str, boo
         # Run the analysis
         timeout_s = config.get('timeout')
         with open(output_file, 'w') as out_f:
+            # start_new_session=True puts opt (and its parent /usr/bin/time)
+            # in a fresh process group. On timeout we kill the whole group,
+            # otherwise the grandchild `opt` survives the wrapper's death
+            # and accumulates RSS until OOM.
+            proc = subprocess.Popen(
+                opt_cmd,
+                stdout=out_f,
+                stderr=subprocess.STDOUT,
+                cwd=config['cwd'],
+                start_new_session=True,
+            )
             try:
-                result = subprocess.run(
-                    opt_cmd,
-                    stdout=out_f,
-                    stderr=subprocess.STDOUT,
-                    cwd=config['cwd'],
-                    timeout=timeout_s,
-                )
+                proc.wait(timeout=timeout_s)
             except subprocess.TimeoutExpired:
+                try:
+                    os.killpg(proc.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                try:
+                    proc.wait(timeout=10)
+                except subprocess.TimeoutExpired:
+                    pass
                 out_f.flush()
-                # Drop partial output so the dir doesn't look "successful".
                 out_f.close()
                 try:
                     os.remove(output_file)
@@ -170,8 +183,8 @@ def process_input_file(args: Tuple[Path, int, int, str, dict]) -> Tuple[str, boo
             out_f.write(f"\n{kernel_dir / ll_file}\n")
             out_f.write(f"{kernel_dir / source_file}\n")
 
-        if result.returncode != 0:
-            return (str(input_file), False, f"opt command failed with exit code {result.returncode}")
+        if proc.returncode != 0:
+            return (str(input_file), False, f"opt command failed with exit code {proc.returncode}")
 
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         log_success(f"[{current}/{total}] Completed {input_file} at {now}")
