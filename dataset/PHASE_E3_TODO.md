@@ -103,13 +103,3 @@ This is a real bug in the locator, not bad mutation data.
 
 **Fix**: investigate the diff manually; may need a more targeted
 `sed_pattern` or a locator bug fix.
-
-## Skipped earlier
-
-The two long-running stragglers from prior porting work, which time out
-even before E4's `--timeout 300` cap:
-
-- `BLK_MQ_CPU_WORK_BATCH/2`
-- `tcp_recovery/1`
-
-See `dataset/UNSUCCESSFUL.md` for details.
