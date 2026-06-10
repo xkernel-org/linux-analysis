@@ -1,4 +1,0 @@
-[[mutation]]
-source_file = "mm/mmu_gather.c"
-definition_source_file = "mm/mmu_gather.c"
-sed_pattern = "s|#define MAX_NR_FOLIOS_PER_FREE\t\t512|#define MAX_NR_FOLIOS_PER_FREE\t\t256|"

@@ -1,4 +1,4 @@
 [[mutation]]
-source_file = "mm/slab_common.c"
-definition_source_file = "mm/slab_common.c"
+source_file = "kernel/rcu/tree.c"
+definition_source_file = "kernel/rcu/tree.c"
 sed_pattern = "s|#define KFREE_DRAIN_JIFFIES (5 \\* HZ)|#define KFREE_DRAIN_JIFFIES (1 \\* HZ)|"

@@ -1,4 +1,0 @@
-[[mutation]]
-source_file = "mm/madvise.c"
-definition_source_file = "mm/madvise.c"
-sed_pattern = "s|#define MAX_MADVISE_GUARD_RETRIES 3|#define MAX_MADVISE_GUARD_RETRIES 5|"

@@ -1,14 +1,14 @@
 [[mutation]]
 source_file = "block/blk-mq.c"
 definition_source_file = "include/linux/blk-mq.h"
-sed_pattern = "s|#define BLK_MQ_MAX_DEPTH\t(10240)|#define BLK_MQ_MAX_DEPTH\t(10239)|"
+sed_pattern = "s|BLK_MQ_MAX_DEPTH\t= 10240|BLK_MQ_MAX_DEPTH\t= 10239|"
 
 [[mutation]]
 source_file = "drivers/md/dm-rq.c"
 definition_source_file = "include/linux/blk-mq.h"
-sed_pattern = "s|#define BLK_MQ_MAX_DEPTH\t(10240)|#define BLK_MQ_MAX_DEPTH\t(10239)|"
+sed_pattern = "s|BLK_MQ_MAX_DEPTH\t= 10240|BLK_MQ_MAX_DEPTH\t= 10239|"
 
 [[mutation]]
 source_file = "drivers/nvme/host/core.c"
 definition_source_file = "include/linux/blk-mq.h"
-sed_pattern = "s|#define BLK_MQ_MAX_DEPTH\t(10240)|#define BLK_MQ_MAX_DEPTH\t(10239)|"
+sed_pattern = "s|BLK_MQ_MAX_DEPTH\t= 10240|BLK_MQ_MAX_DEPTH\t= 10239|"

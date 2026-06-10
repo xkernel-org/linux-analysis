@@ -1,0 +1,5 @@
+SOURCE_FILE=net/mptcp/protocol.c
+FUNCTION_NAME=mptcp_rcv_space_init
+SOURCE_OP="select"
+CONSTANT_VALUE=5360
+OCCURENCE=1

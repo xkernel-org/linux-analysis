@@ -79,6 +79,7 @@ if [[ ! -f $LINUX_WLLVM/vmlinux-xk-dataset.bc ]]; then
     ./scripts/config -e MTD_UBI
     ./scripts/config -e UBIFS_FS
     ./scripts/config -e NFSD
+    ./scripts/config -e MPTCP
     make CC=wllvm AR=llvm-ar HOSTCC=clang olddefconfig
 
     /usr/bin/time -v make CC=wllvm AR=llvm-ar HOSTCC=clang -j$(nproc)

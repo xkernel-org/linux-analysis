@@ -1,4 +1,4 @@
 [[mutation]]
 source_file = "kernel/sched/fair.c"
 definition_source_file = "kernel/sched/sched.h"
-sed_pattern = "s|# define SCHED_NR_MIGRATE_BREAK 32|# define SCHED_NR_MIGRATE_BREAK 16|"
+sed_pattern = "s|#define SCHED_NR_MIGRATE_BREAK 32|#define SCHED_NR_MIGRATE_BREAK 16|"

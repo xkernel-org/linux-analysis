@@ -1,4 +1,0 @@
-[[mutation]]
-source_file = "net/ipv6/mcast.c"
-definition_source_file = "include/net/mld.h"
-sed_pattern = "s|#define MLD_MAX_QUEUE\t\t8|#define MLD_MAX_QUEUE\t\t16|"

@@ -1,9 +1,9 @@
 [[mutation]]
 source_file = "io_uring/io_uring.c"
-definition_source_file = "io_uring/io_uring.h"
+definition_source_file = "io_uring/io_uring.c"
 sed_pattern = "s|#define IORING_MAX_ENTRIES\t32768|#define IORING_MAX_ENTRIES\t16384|"
 
 [[mutation]]
 source_file = "io_uring/io_uring.c"
-definition_source_file = "io_uring/io_uring.h"
+definition_source_file = "io_uring/io_uring.c"
 sed_pattern = "s|#define IORING_MAX_CQ_ENTRIES\t(2 \\* IORING_MAX_ENTRIES)|#define IORING_MAX_CQ_ENTRIES\t32768|"

@@ -1,5 +1,0 @@
-SOURCE_FILE=net/ipv4/tcp_output.c
-FUNCTION_NAME=tcp_send_delayed_ack
-SOURCE_OP="58"
-CONSTANT_VALUE=58
-OCCURENCE=1

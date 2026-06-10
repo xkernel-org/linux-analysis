@@ -1,4 +1,4 @@
 [[mutation]]
-source_file = "fs/btrfs/direct-io.c"
+source_file = "fs/btrfs/inode.c"
 definition_source_file = "fs/btrfs/bio.h"
 sed_pattern = "s|#define BTRFS_MAX_BIO_SECTORS\t\t(256)|#define BTRFS_MAX_BIO_SECTORS\t\t(128)|"

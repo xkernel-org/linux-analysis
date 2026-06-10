@@ -1,4 +1,0 @@
-[[mutation]]
-source_file = "block/blk-zoned.c"
-definition_source_file = "block/blk-zoned.c"
-sed_pattern = "s|#define BLK_ZONE_WPLUG_DEFAULT_POOL_SIZE\t128|#define BLK_ZONE_WPLUG_DEFAULT_POOL_SIZE\t64|"
