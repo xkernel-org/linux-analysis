@@ -1,3 +1,0 @@
-btrfs_dio_iomap_begin: BB2:I2 -> BB58:I0 => 240 instructions
-
-Total: 240 instructions

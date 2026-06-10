@@ -1,5 +1,0 @@
-SOURCE_FILE=fs/eventpoll.c
-FUNCTION_NAME=ep_loop_check_proc
-SOURCE_OP="icmp"
-CONSTANT_VALUE=4
-OCCURENCE=1

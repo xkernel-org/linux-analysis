@@ -1,3 +1,0 @@
-__blk_mq_sched_dispatch_requests: [BB33:I0 -> BB33:I0, BB63:I0 -> BB63:I0] => 2 instructions
-
-Total: 2 instructions

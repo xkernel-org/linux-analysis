@@ -1,8 +1,0 @@
-[
-  {
-    "function": "ubifs_garbage_collect",
-    "offset": "0xff - 0x116",
-    "source_start": "fs/ubifs/gc.c:706",
-    "source_end": "fs/ubifs/gc.c:706"
-  }
-]

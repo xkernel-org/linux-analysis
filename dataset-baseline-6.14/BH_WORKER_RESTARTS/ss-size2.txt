@@ -1,3 +1,0 @@
-bh_worker: BB10:I1 -> BB22:I2 => 81 instructions
-
-Total: 81 instructions

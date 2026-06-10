@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfsd_file_gc_worker",
-    "offset": "0x27e - 0x2d46b",
-    "source_start": "./include/linux/workqueue.h:677",
-    "source_end": "./include/linux/workqueue.h:677"
-  }
-]

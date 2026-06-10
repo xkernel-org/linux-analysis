@@ -1,3 +1,0 @@
-shrink_slab: BB12:I1 -> BB29:I2 => 107 instructions
-
-Total: 107 instructions

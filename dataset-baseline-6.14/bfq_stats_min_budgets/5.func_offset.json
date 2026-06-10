@@ -1,8 +1,0 @@
-[
-  {
-    "function": "bfq_init_bfqq",
-    "offset": "0x11f - 0x12d",
-    "source_start": "block/bfq-iosched.c:1473",
-    "source_end": "block/bfq-iosched.c:1473"
-  }
-]

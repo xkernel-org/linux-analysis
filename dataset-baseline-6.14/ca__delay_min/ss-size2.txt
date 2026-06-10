@@ -1,3 +1,0 @@
-cubictcp_acked: BB21:I1 -> BB21:I7 => 7 instructions
-
-Total: 7 instructions

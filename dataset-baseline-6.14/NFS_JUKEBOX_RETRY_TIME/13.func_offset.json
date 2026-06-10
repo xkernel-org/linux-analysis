@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs3_rpc_wrapper",
-    "offset": "0x3d - 0x3d",
-    "source_start": "fs/nfs/nfs3proc.c:40",
-    "source_end": "fs/nfs/nfs3proc.c:40"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "btrfs_wq_run_delayed_node",
-    "offset": "0x7e - 0x7e",
-    "source_start": "fs/btrfs/delayed-inode.c:1390",
-    "source_end": "fs/btrfs/delayed-inode.c:1390"
-  }
-]

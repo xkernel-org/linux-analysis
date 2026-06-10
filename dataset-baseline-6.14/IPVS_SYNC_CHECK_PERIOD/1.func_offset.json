@@ -1,8 +1,0 @@
-[
-  {
-    "function": "sync_thread_master",
-    "offset": "0x3a0 - 0x3a5",
-    "source_start": "net/netfilter/ipvs/ip_vs_sync.c:1667",
-    "source_end": "net/netfilter/ipvs/ip_vs_sync.c:1667"
-  }
-]

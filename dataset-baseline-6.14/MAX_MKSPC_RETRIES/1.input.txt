@@ -1,5 +1,0 @@
-SOURCE_FILE=fs/ubifs/budget.c
-FUNCTION_NAME=make_free_space
-SOURCE_OP="icmp"
-CONSTANT_VALUE=4
-OCCURENCE=1

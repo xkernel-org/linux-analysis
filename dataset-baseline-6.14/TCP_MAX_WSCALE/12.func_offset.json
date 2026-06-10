@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_select_initial_window",
-    "offset": "0x24 - 0x3f8f",
-    "source_start": "net/ipv4/tcp_output.c:216",
-    "source_end": "net/ipv4/tcp_output.c:3926"
-  }
-]

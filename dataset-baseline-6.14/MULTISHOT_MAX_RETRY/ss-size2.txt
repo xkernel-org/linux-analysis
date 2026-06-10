@@ -1,3 +1,0 @@
-io_recv_finish: BB12:I4 -> BB12:I5 => 2 instructions
-
-Total: 2 instructions

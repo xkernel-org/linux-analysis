@@ -1,5 +1,0 @@
-SOURCE_FILE=kernel/softirq.c
-FUNCTION_NAME=handle_softirqs
-SOURCE_OP="add"
-CONSTANT_VALUE=-2
-OCCURENCE=1

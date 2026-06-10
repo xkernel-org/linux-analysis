@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs3_commit_done",
-    "offset": "0x7a - 0x135",
-    "source_start": "fs/nfs/nfs3proc.c:56",
-    "source_end": "fs/nfs/nfs3proc.c:56"
-  }
-]

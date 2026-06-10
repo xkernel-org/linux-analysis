@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dequeue_task_fair",
-    "offset": "0x6d - 0x70",
-    "source_start": "kernel/sched/fair.c:4918",
-    "source_end": "kernel/sched/fair.c:4918"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "amt_event_work",
-    "offset": "0x230 - 0x239",
-    "source_start": "drivers/net/amt.c:958",
-    "source_end": "drivers/net/amt.c:958"
-  }
-]

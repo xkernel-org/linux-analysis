@@ -1,3 +1,0 @@
-f2fs_build_segment_manager: BB14:I35 -> BB14:I35 => 1 instructions
-
-Total: 1 instructions

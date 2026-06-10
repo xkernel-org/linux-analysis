@@ -1,8 +1,0 @@
-[
-  {
-    "function": "count_partial_free_approx",
-    "offset": "0x14 - 0x22",
-    "source_start": "mm/slub.c:3488",
-    "source_end": "mm/slub.c:3488"
-  }
-]

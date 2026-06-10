@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_init_sock",
-    "offset": "0x70 - 0x77",
-    "source_start": "net/ipv4/tcp.c:437",
-    "source_end": "net/ipv4/tcp.c:437"
-  }
-]

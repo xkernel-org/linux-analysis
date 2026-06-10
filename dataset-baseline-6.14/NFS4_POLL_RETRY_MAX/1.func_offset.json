@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs41_sequence_call_done",
-    "offset": "0x120 - 0x128",
-    "source_start": "fs/nfs/nfs4proc.c:9563",
-    "source_end": "fs/nfs/nfs4proc.c:9563"
-  }
-]

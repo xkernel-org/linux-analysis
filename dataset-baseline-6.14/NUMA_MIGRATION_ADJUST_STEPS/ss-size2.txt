@@ -1,3 +1,0 @@
-should_numa_migrate_memory: BB10:I9 -> BB14:I2 => 22 instructions
-
-Total: 22 instructions

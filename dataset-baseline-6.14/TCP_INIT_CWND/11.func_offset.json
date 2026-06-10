@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_sndbuf_expand",
-    "offset": "0x73 - 0xb1",
-    "source_start": "net/ipv4/tcp_input.c:445",
-    "source_end": "net/ipv4/tcp_input.c:455"
-  }
-]

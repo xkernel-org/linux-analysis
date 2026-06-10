@@ -1,8 +1,0 @@
-[
-  {
-    "function": "btrfs_balance_delayed_items",
-    "offset": "0xa3 - 0x113",
-    "source_start": "fs/btrfs/delayed-inode.c:1405",
-    "source_end": "fs/btrfs/delayed-inode.c:1405"
-  }
-]

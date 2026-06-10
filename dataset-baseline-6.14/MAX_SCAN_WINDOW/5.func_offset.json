@@ -1,8 +1,0 @@
-[
-  {
-    "function": "task_scan_max",
-    "offset": "0x21 - 0xc529",
-    "source_start": "kernel/sched/fair.c:1519",
-    "source_end": "kernel/sched/fair.c:1519"
-  }
-]

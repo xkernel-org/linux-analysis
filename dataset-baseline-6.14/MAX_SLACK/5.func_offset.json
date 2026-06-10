@@ -1,8 +1,0 @@
-[
-  {
-    "function": "do_select",
-    "offset": "0x197 - 0x77a",
-    "source_start": "fs/select.c:509",
-    "source_end": "fs/select.c:603"
-  }
-]

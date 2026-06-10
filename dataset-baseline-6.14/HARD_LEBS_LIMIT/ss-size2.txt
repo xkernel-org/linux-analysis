@@ -1,3 +1,0 @@
-ubifs_garbage_collect: BB12:I0 -> BB12:I1 => 2 instructions
-
-Total: 2 instructions

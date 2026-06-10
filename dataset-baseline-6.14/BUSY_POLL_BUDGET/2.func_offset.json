@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dynamic_tracking_do_busy_loop",
-    "offset": "0x45 - 0x45",
-    "source_start": "io_uring/napi.c:184",
-    "source_end": "io_uring/napi.c:184"
-  }
-]

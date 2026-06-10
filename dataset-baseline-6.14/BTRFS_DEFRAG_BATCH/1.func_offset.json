@@ -1,8 +1,0 @@
-[
-  {
-    "function": "btrfs_run_defrag_inodes",
-    "offset": "0x32b - 0x37f",
-    "source_start": "fs/btrfs/defrag.c:267",
-    "source_end": "fs/btrfs/defrag.c:272"
-  }
-]

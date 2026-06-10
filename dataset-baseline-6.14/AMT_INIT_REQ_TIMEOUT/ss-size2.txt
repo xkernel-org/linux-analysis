@@ -1,3 +1,0 @@
-amt_event_work: BB75:I0 -> BB75:I0 => 1 instructions
-
-Total: 1 instructions

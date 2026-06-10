@@ -1,8 +1,0 @@
-[
-  {
-    "function": "blk_mq_try_issue_directly",
-    "offset": "0x473 - 0x47f",
-    "source_start": "block/blk-mq.c:1988",
-    "source_end": "block/blk-mq.c:1991"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs41_sequence_process",
-    "offset": "0xbc - 0xc7",
-    "source_start": "fs/nfs/nfs4proc.c:989",
-    "source_end": "fs/nfs/nfs4proc.c:989"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "smc_tx_consumer_update",
-    "offset": "0x163 - 0x171",
-    "source_start": "./include/linux/workqueue.h:677",
-    "source_end": "./include/linux/workqueue.h:677"
-  }
-]

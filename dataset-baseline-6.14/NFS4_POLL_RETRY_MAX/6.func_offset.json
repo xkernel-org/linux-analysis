@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs4_reclaim_complete_done",
-    "offset": "0xfa - 0x102",
-    "source_start": "fs/nfs/nfs4proc.c:9717",
-    "source_end": "fs/nfs/nfs4proc.c:9717"
-  }
-]

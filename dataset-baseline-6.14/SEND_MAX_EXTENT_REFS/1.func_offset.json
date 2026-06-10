@@ -1,8 +1,0 @@
-[
-  {
-    "function": "check_extent_item",
-    "offset": "0x38 - 0x43",
-    "source_start": "fs/btrfs/send.c:1547",
-    "source_end": "fs/btrfs/send.c:1551"
-  }
-]

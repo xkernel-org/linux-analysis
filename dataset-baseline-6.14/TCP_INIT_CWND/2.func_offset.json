@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_disconnect",
-    "offset": "0x19b - 0x25a1f",
-    "source_start": "./include/net/tcp.h:1337",
-    "source_end": "./include/net/tcp.h:1337"
-  }
-]

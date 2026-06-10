@@ -1,3 +1,0 @@
-gss_fill_context: BB2:I2 -> BB23:I6 => 94 instructions
-
-Total: 94 instructions

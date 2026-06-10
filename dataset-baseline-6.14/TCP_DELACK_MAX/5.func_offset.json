@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_disconnect",
-    "offset": "0x169 - 0x170",
-    "source_start": "net/ipv4/tcp.c:3343",
-    "source_end": "net/ipv4/tcp.c:3343"
-  }
-]

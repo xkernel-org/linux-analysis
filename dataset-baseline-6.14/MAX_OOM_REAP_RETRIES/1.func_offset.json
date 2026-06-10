@@ -1,8 +1,0 @@
-[
-  {
-    "function": "oom_reaper",
-    "offset": "0x67 - 0x200",
-    "source_start": "mm/oom_kill.c:618",
-    "source_end": "mm/oom_kill.c:618"
-  }
-]

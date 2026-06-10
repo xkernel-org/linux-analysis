@@ -1,8 +1,0 @@
-[
-  {
-    "function": "__schedule_delayed_monitor_work",
-    "offset": "0x5 - 0x3126",
-    "source_start": "mm/slab_common.c:1633",
-    "source_end": "./include/linux/workqueue.h:677"
-  }
-]

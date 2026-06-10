@@ -1,8 +1,0 @@
-[
-  {
-    "function": "task_numa_find_cpu",
-    "offset": "0x3ad - 0x3c6",
-    "source_start": "kernel/sched/fair.c:2371",
-    "source_end": "kernel/sched/fair.c:2371"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfsd_file_put",
-    "offset": "0x141 - 0x2c38b",
-    "source_start": "./include/linux/workqueue.h:677",
-    "source_end": "./include/linux/workqueue.h:677"
-  }
-]

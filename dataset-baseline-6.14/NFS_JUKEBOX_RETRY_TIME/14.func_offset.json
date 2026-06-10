@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs3_read_done",
-    "offset": "0xba - 0xe25",
-    "source_start": "fs/nfs/nfs3proc.c:56",
-    "source_end": "fs/nfs/nfs3proc.c:56"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "xfs_inodegc_register_shrinker",
-    "offset": "0x5c - 0x6a",
-    "source_start": "fs/xfs/xfs_icache.c:2341",
-    "source_end": "fs/xfs/xfs_icache.c:2341"
-  }
-]

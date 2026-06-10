@@ -1,8 +1,0 @@
-[
-  {
-    "function": "__ia32_compat_sys_io_submit",
-    "offset": "0x6a - 0xb9",
-    "source_start": "fs/aio.c:2143",
-    "source_end": "fs/aio.c:2157"
-  }
-]

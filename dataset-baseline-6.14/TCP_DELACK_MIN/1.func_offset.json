@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dccp_delack_timer",
-    "offset": "0x120 - 0x140",
-    "source_start": "net/dccp/timer.c:180",
-    "source_end": "net/dccp/timer.c:180"
-  }
-]

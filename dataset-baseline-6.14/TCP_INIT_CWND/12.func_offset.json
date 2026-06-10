@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_init_transfer",
-    "offset": "0x1d0 - 0x1eb",
-    "source_start": "net/ipv4/tcp_input.c:595",
-    "source_end": "net/ipv4/tcp_input.c:595"
-  }
-]

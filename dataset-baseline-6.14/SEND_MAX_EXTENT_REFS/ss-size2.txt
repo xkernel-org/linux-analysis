@@ -1,3 +1,0 @@
-check_extent_item: BB5:I0 -> BB6:I0 => 4 instructions
-
-Total: 4 instructions

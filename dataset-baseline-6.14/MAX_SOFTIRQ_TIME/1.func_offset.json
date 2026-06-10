@@ -1,8 +1,0 @@
-[
-  {
-    "function": "handle_softirqs",
-    "offset": "0x151 - 0x17c",
-    "source_start": "kernel/softirq.c:580",
-    "source_end": "kernel/softirq.c:580"
-  }
-]

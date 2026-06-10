@@ -1,8 +1,0 @@
-[
-  {
-    "function": "io_poll_can_finish_inline",
-    "offset": "0x30 - 0x30",
-    "source_start": "io_uring/poll.c:96",
-    "source_end": "io_uring/poll.c:96"
-  }
-]

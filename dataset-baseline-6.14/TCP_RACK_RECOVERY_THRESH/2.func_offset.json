@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_fastretrans_alert",
-    "offset": "0x405 - 0x660",
-    "source_start": "net/ipv4/tcp_input.c:2652",
-    "source_end": "net/ipv4/tcp_input.c:2652"
-  }
-]

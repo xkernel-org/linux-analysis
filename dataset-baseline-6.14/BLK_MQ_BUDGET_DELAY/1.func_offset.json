@@ -1,8 +1,0 @@
-[
-  {
-    "function": "__blk_mq_sched_dispatch_requests",
-    "offset": "0x577 - 0x57f",
-    "source_start": "block/blk-mq-sched.c:156",
-    "source_end": "block/blk-mq-sched.c:156"
-  }
-]

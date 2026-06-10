@@ -1,5 +1,0 @@
-SOURCE_FILE=fs/mbcache.c
-FUNCTION_NAME=mb_cache_shrink_worker
-SOURCE_OP="lshr"
-CONSTANT_VALUE=4
-OCCURENCE=1

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "task_numa_work",
-    "offset": "0xfe - 0x8c2",
-    "source_start": "kernel/sched/fair.c:3343",
-    "source_end": "kernel/sched/fair.c:3534"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "xfs_trans_unreserve_and_mod_sb",
-    "offset": "0x186 - 0x196",
-    "source_start": "fs/xfs/xfs_trans.c:662",
-    "source_end": "fs/xfs/xfs_trans.c:662"
-  }
-]

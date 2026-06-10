@@ -1,8 +1,0 @@
-[
-  {
-    "function": "io_recv_finish",
-    "offset": "0x3eb - 0x3fd",
-    "source_start": "io_uring/net.c:874",
-    "source_end": "io_uring/net.c:874"
-  }
-]

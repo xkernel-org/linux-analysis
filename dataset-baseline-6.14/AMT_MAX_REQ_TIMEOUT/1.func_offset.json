@@ -1,8 +1,0 @@
-[
-  {
-    "function": "amt_event_work",
-    "offset": "0x281 - 0x1f5",
-    "source_start": "drivers/net/amt.c:981",
-    "source_end": "./include/linux/workqueue.h:692"
-  }
-]

@@ -1,3 +1,0 @@
-bfq_init_queue: BB12:I42 -> BB12:I42 => 1 instructions
-
-Total: 1 instructions

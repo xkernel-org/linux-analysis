@@ -1,8 +1,0 @@
-[
-  {
-    "function": "smc_tx_sndbuf_nonempty",
-    "offset": "0x2bf - 0x2cd",
-    "source_start": "./include/linux/workqueue.h:692",
-    "source_end": "./include/linux/workqueue.h:692"
-  }
-]

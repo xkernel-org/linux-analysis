@@ -1,8 +1,0 @@
-[
-  {
-    "function": "blk_mq_map_swqueue",
-    "offset": "0x413 - 0x41e",
-    "source_start": "block/blk-mq.c:4199",
-    "source_end": "block/blk-mq.c:4199"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_init_cwnd",
-    "offset": "0x23 - 0x6dcc",
-    "source_start": "net/ipv4/tcp_input.c:1011",
-    "source_end": "./include/net/tcp.h:1337"
-  }
-]

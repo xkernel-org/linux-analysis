@@ -1,8 +1,0 @@
-[
-  {
-    "function": "bbr_main",
-    "offset": "0x577 - 0x1a2",
-    "source_start": "net/ipv4/tcp_bbr.c:312",
-    "source_end": "net/ipv4/tcp_bbr.c:606"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "sbitmap_queue_min_shallow_depth",
-    "offset": "0x49 - 0x60",
-    "source_start": "lib/sbitmap.c:426",
-    "source_end": "lib/sbitmap.c:469"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nvme_probe",
-    "offset": "0x2a9 - 0x494",
-    "source_start": "drivers/nvme/host/pci.c:3089",
-    "source_end": "drivers/nvme/host/nvme.h:745"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "sched_balance_rq",
-    "offset": "0x9f2 - 0x920",
-    "source_start": "kernel/sched/fair.c:4983",
-    "source_end": "kernel/sched/fair.c:9607"
-  }
-]

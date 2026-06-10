@@ -1,8 +1,0 @@
-[
-  {
-    "function": "xfs_inobt_walk",
-    "offset": "0x5c - 0x12",
-    "source_start": "fs/xfs/xfs_iwalk.c:714",
-    "source_end": "fs/xfs/xfs_iwalk.c:747"
-  }
-]

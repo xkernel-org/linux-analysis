@@ -1,8 +1,0 @@
-[
-  {
-    "function": "ep_loop_check_proc",
-    "offset": "0x22 - 0xbd",
-    "source_start": "fs/eventpoll.c:2147",
-    "source_end": "fs/eventpoll.c:2154"
-  }
-]

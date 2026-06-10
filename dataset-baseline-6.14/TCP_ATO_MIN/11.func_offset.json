@@ -1,8 +1,0 @@
-[
-  {
-    "function": "__tcp_send_ack.part.0",
-    "offset": "0x121 - 0x121",
-    "source_start": "net/ipv4/tcp_output.c:4259",
-    "source_end": "net/ipv4/tcp_output.c:4259"
-  }
-]

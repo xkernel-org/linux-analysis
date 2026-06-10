@@ -1,8 +1,0 @@
-[
-  {
-    "function": "rds_ib_recv_cache_put",
-    "offset": "0x4f - 0x5a",
-    "source_start": "net/rds/ib_recv.c:496",
-    "source_end": "net/rds/ib_recv.c:496"
-  }
-]

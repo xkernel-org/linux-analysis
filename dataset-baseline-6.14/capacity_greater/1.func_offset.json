@@ -1,8 +1,0 @@
-[
-  {
-    "function": "update_sd_lb_stats.constprop.0",
-    "offset": "0x9d8 - 0x9d8",
-    "source_start": "kernel/sched/fair.c:10448",
-    "source_end": "kernel/sched/fair.c:10448"
-  }
-]

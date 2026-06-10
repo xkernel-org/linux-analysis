@@ -1,8 +1,0 @@
-[
-  {
-    "function": "__tcp_ecn_check_ce",
-    "offset": "0xef - 0xef",
-    "source_start": "net/ipv4/tcp_input.c:324",
-    "source_end": "net/ipv4/tcp_input.c:324"
-  }
-]

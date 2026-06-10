@@ -1,8 +1,0 @@
-[
-  {
-    "function": "bfq_update_rate_reset",
-    "offset": "0x14 - 0x2c",
-    "source_start": "block/bfq-iosched.c:3475",
-    "source_end": "block/bfq-iosched.c:3475"
-  }
-]

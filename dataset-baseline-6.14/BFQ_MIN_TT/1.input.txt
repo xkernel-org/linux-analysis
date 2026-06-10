@@ -1,5 +1,0 @@
-SOURCE_FILE=block/bfq-iosched.c
-FUNCTION_NAME=bfq_dispatch_request
-SOURCE_OP="icmp"
-CONSTANT_VALUE=2000000
-OCCURENCE=1

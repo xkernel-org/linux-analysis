@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dev_gro_receive",
-    "offset": "0x52c - 0x53b",
-    "source_start": "net/core/gro.c:539",
-    "source_end": "net/core/gro.c:539"
-  }
-]

@@ -1,3 +1,0 @@
-bio_put: BB5:I18 -> BB5:I19 => 2 instructions
-
-Total: 2 instructions

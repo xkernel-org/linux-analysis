@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dccp_send_ack.part.0",
-    "offset": "0x78 - 0x78",
-    "source_start": "net/dccp/output.c:590",
-    "source_end": "net/dccp/output.c:590"
-  }
-]

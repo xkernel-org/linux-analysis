@@ -1,8 +1,0 @@
-[
-  {
-    "function": "nfs3_proc_rename_done",
-    "offset": "0x74 - 0xc35",
-    "source_start": "fs/nfs/nfs3proc.c:56",
-    "source_end": "fs/nfs/nfs3proc.c:56"
-  }
-]

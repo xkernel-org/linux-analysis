@@ -1,8 +1,0 @@
-[
-  {
-    "function": "f2fs_start_gc_thread",
-    "offset": "0x71 - 0x78",
-    "source_start": "fs/f2fs/gc.c:198",
-    "source_end": "fs/f2fs/gc.c:198"
-  }
-]

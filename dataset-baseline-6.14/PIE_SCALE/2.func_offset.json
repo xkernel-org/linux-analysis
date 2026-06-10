@@ -1,8 +1,0 @@
-[
-  {
-    "function": "pie_calculate_probability",
-    "offset": "0x38 - 0x1ba",
-    "source_start": "net/sched/sch_pie.c:318",
-    "source_end": "net/sched/sch_pie.c:413"
-  }
-]

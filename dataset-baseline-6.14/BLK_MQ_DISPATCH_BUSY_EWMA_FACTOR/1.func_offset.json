@@ -1,8 +1,0 @@
-[
-  {
-    "function": "blk_mq_flush_plug_list",
-    "offset": "0x9c - 0x17c",
-    "source_start": "./include/linux/list.h:183",
-    "source_end": "block/blk-mq.c:2870"
-  }
-]

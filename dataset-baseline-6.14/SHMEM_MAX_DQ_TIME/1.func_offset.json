@@ -1,8 +1,0 @@
-[
-  {
-    "function": "shmem_read_file_info",
-    "offset": "0x91 - 0xa2",
-    "source_start": "mm/shmem_quota.c:77",
-    "source_end": "mm/shmem_quota.c:77"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_sendmsg_locked",
-    "offset": "0x409 - 0x40d",
-    "source_start": "net/ipv4/tcp.c:1162",
-    "source_end": "net/ipv4/tcp.c:1162"
-  }
-]

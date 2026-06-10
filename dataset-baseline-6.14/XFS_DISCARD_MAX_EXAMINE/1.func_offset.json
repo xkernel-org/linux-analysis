@@ -1,8 +1,0 @@
-[
-  {
-    "function": "xfs_ioc_trim",
-    "offset": "0x57c - 0x595",
-    "source_start": "fs/xfs/xfs_discard.c:241",
-    "source_end": "fs/xfs/xfs_discard.c:247"
-  }
-]

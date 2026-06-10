@@ -1,8 +1,0 @@
-[
-  {
-    "function": "balance_pgdat",
-    "offset": "0x1e0 - 0x5fc",
-    "source_start": "mm/vmscan.c:6961",
-    "source_end": "mm/vmscan.c:7033"
-  }
-]

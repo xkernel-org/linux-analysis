@@ -1,8 +1,0 @@
-[
-  {
-    "function": "io_poll_remove",
-    "offset": "0x85 - 0x88",
-    "source_start": "io_uring/poll.c:96",
-    "source_end": "io_uring/poll.c:96"
-  }
-]

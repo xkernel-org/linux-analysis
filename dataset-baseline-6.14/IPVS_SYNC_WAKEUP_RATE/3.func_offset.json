@@ -1,8 +1,0 @@
-[
-  {
-    "function": "master_wakeup_work_handler",
-    "offset": "0x55 - 0x55",
-    "source_start": "net/netfilter/ipvs/ip_vs_sync.c:1631",
-    "source_end": "net/netfilter/ipvs/ip_vs_sync.c:1631"
-  }
-]

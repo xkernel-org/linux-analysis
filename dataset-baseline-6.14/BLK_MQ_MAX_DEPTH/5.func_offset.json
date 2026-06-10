@@ -1,8 +1,0 @@
-[
-  {
-    "function": "dm_mq_init_request_queue",
-    "offset": "0x76 - 0x8a",
-    "source_start": "drivers/md/dm-rq.c:55",
-    "source_end": "drivers/md/dm-rq.c:55"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "tcp_init_sock",
-    "offset": "0x7a7b - 0x2d2ff",
-    "source_start": "./include/net/tcp.h:1337",
-    "source_end": "./include/net/tcp.h:1337"
-  }
-]

@@ -1,8 +1,0 @@
-[
-  {
-    "function": "btrfs_async_run_delayed_root",
-    "offset": "0x20f - 0x223",
-    "source_start": "fs/btrfs/delayed-inode.c:1369",
-    "source_end": "fs/btrfs/delayed-inode.c:1369"
-  }
-]

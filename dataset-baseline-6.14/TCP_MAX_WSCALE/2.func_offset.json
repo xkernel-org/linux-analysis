@@ -1,8 +1,0 @@
-[
-  {
-    "function": "bpf_sk_assign_tcp_reqsk",
-    "offset": "0xe3 - 0xf1",
-    "source_start": "net/core/filter.c:12018",
-    "source_end": "net/core/filter.c:12018"
-  }
-]

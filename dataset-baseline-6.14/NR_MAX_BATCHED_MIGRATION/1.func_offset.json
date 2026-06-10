@@ -1,8 +1,0 @@
-[
-  {
-    "function": "migrate_pages",
-    "offset": "0x872 - 0x877",
-    "source_start": "mm/migrate.c:2083",
-    "source_end": "mm/migrate.c:2083"
-  }
-]

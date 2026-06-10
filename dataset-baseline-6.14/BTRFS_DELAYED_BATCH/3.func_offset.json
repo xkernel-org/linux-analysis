@@ -1,8 +1,0 @@
-[
-  {
-    "function": "finish_one_item",
-    "offset": "0x24 - 0x24",
-    "source_start": "fs/btrfs/delayed-inode.c:414",
-    "source_end": "fs/btrfs/delayed-inode.c:414"
-  }
-]

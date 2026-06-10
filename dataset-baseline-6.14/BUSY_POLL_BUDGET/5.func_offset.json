@@ -1,8 +1,0 @@
-[
-  {
-    "function": "do_epoll_wait",
-    "offset": "0x2d4 - 0x31f",
-    "source_start": "fs/eventpoll.c:447",
-    "source_end": "fs/eventpoll.c:451"
-  }
-]

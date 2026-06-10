@@ -1,8 +1,0 @@
-[
-  {
-    "function": "amt_discovery_work",
-    "offset": "0x35 - 0x5357",
-    "source_start": "./include/linux/workqueue.h:692",
-    "source_end": "./include/linux/workqueue.h:692"
-  }
-]

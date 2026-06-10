@@ -1,8 +1,0 @@
-[
-  {
-    "function": "adjust_jiffies_till_sched_qs",
-    "offset": "0x40 - 0x5f",
-    "source_start": "kernel/rcu/tree.c:455",
-    "source_end": "kernel/rcu/tree.c:458"
-  }
-]
