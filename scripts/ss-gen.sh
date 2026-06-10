@@ -28,7 +28,8 @@
 # Pipeline tuning:
 #   --timeout SECONDS     wall-clock cap for stage 1 (taint pass);
 #                         on timeout, stage 1 exits non-zero and stage 2
-#                         is skipped for that input.
+#                         is skipped for that input. Omit for no timeout
+#                         (default).
 
 set -e
 

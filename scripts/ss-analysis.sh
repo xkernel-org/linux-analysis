@@ -22,6 +22,8 @@
 #                       turn off upward interproc taint walk (default: on)
 #   --interproc         turn on downward interproc (default: off)
 #   --indirect-call     turn on indirect-call taint (default: off)
+#   --timeout SECONDS   wall-clock cap on the opt invocation. Omit for
+#                       no timeout (default).
 
 set -e
 

@@ -252,7 +252,8 @@ def main():
         type=int,
         default=None,
         help='Wall-clock cap (seconds) per opt invocation. On timeout, '
-             'the job is recorded as failed and its partial output.txt is removed.'
+             'the job is recorded as failed and its partial output.txt is '
+             'removed. Omit for no timeout (default).'
     )
 
     args = parser.parse_args()
